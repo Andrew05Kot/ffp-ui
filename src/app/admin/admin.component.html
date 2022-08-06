@@ -1,15 +1,30 @@
-<section class="main-section" [ngClass]="{'disable-scroll': needToDisableScroll}">
-    <section class="window-top">
-        <app-admin-nav-bar></app-admin-nav-bar>
-    </section>
-    <section class="body">
-        <div class="side-bar">
-            <app-admin-side-bar (onToggleSideNav)="onToggleSideNav($event)"></app-admin-side-bar>
-        </div>
-        <div class="main-content">
-            <div class="content" [ngClass]="contentClass">
-                <!-- <router-outlet></router-outlet> -->
-            </div>
-        </div>
-    </section>
-</section>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-button (click)="opened=!opened">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]="opened" mode="side">
+        <mat-list>
+            <mat-list-item>
+                <a mat-button color="primary"
+                   [routerLinkActive]="['active']"
+                   routerLink="/dashboard">
+                    Dashboard
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <a mat-button color="primary"
+                   [routerLinkActive]="['active']"
+                   routerLink="/orders">
+                    Orders
+                </a>
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

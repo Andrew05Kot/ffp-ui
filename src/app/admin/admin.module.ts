@@ -3,21 +3,22 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminNavBarComponent } from './admin-nav-bar/admin-nav-bar.component';
-import { AdminSideBarComponent } from './admin-side-bar/admin-side-bar.component';
 import { MaterialModule } from '../_modules/material/material.module';
 import { RouterModule } from "@angular/router";
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
     declarations: [
         AdminComponent,
         AdminDashboardComponent,
         AdminNavBarComponent,
-        AdminSideBarComponent
+        OrderComponent
     ],
-	imports: [
-		CommonModule,
-		MaterialModule,
-		RouterModule
-	]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        RouterModule
+    ]
 })
-export class AdminModule { }
+export class AdminModule {
+}
