@@ -7,22 +7,8 @@
 </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">
-        <mat-list>
-            <mat-list-item>
-                <a mat-button color="primary"
-                   [routerLinkActive]="['active']"
-                   routerLink="/dashboard">
-                    Dashboard
-                </a>
-            </mat-list-item>
-            <mat-list-item>
-                <a mat-button color="primary"
-                   [routerLinkActive]="['active']"
-                   routerLink="/orders">
-                    Orders
-                </a>
-            </mat-list-item>
-        </mat-list>
+        <app-admin-nav-bar>
+        </app-admin-nav-bar>
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
