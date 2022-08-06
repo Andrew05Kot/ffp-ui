@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <div class="admin-header">
-        <app-admin-header></app-admin-header>
+        <app-admin-header (onToggleSideNav)="opened = $event"></app-admin-header>
     </div>
 </mat-toolbar>
 <mat-sidenav-container>

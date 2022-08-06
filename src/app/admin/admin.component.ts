@@ -12,7 +12,7 @@ interface SideNavToggle {
 })
 export class AdminComponent implements OnInit {
 
-    opened = true;
+    opened = false;
 
     constructor() {
     }
