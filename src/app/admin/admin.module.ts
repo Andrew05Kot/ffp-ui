@@ -6,6 +6,7 @@ import { AdminNavBarComponent } from './admin-nav-bar/admin-nav-bar.component';
 import { MaterialModule } from '../_modules/material/material.module';
 import { RouterModule } from "@angular/router";
 import { OrderComponent } from './order/order.component';
+import { NgxTranslateModule } from "../_modules/localization/localization.module";
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { OrderComponent } from './order/order.component';
     imports: [
         CommonModule,
         MaterialModule,
-        RouterModule
+        RouterModule,
+        NgxTranslateModule
     ]
 })
 export class AdminModule {
