@@ -1,0 +1,53 @@
+<div class="orders-page">
+    <div class="header"></div>
+    <div class="table-container">
+        <div>
+            <mat-table [dataSource]="orders">
+                <ng-container matColumnDef="creationDate">
+                    <mat-header-cell *matHeaderCellDef
+                                     class="creationDate-cell">Date
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="creationDate-cell"> {{element.creationDate}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="totalPrice">
+                    <mat-header-cell *matHeaderCellDef
+                                     class="total-price-cell">Total Price
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="total-price-cell"> {{element.totalPrice}}$</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="cardName">
+                    <mat-header-cell *matHeaderCellDef
+                                     class="card-name-cell">Card Name
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="card-name-cell"> {{element.cardName}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="cardNumber">
+                    <mat-header-cell *matHeaderCellDef
+                                     class="card-number-cell">Card Number
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="card-number-cell"> {{element.cardNumber}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="paymentMethod">
+                    <mat-header-cell *matHeaderCellDef
+                                     class="payment-method-cell">Payment Method
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element"
+                              class="payment-method-cell"> {{element.paymentMethod}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <div class="pg-container">
+            <mat-paginator appPagination [length]="page?.totalElements" [pageSize]="page?.size"
+                           [pageIndex]="page?.index"
+                           [hidePageSize]='true' (page)="onPageEvent($event)">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

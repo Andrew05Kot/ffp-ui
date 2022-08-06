@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from "./admin.component";
-import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
-import { OrderComponent } from "./order/order.component";
+import { AdminDashboardComponent } from "./dashboard/admin-dashboard.component";
+import { OrderTableComponent } from "./order/table/order-table.component";
 
 const routes: Routes = [
     {
@@ -19,7 +19,7 @@ const routes: Routes = [
                 path: 'dashboard', component: AdminDashboardComponent
             },
             {
-                path: 'orders', component: OrderComponent
+                path: 'orders', component: OrderTableComponent
             }
         ]
     }
