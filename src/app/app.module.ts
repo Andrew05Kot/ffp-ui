@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './_modules/material/material.module';
 import { AdminRouting } from "./admin/admin-routing.module";
+import { NgxTranslateModule } from "./_modules/localization/localization.module";
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { AdminRouting } from "./admin/admin-routing.module";
         BrowserModule,
         AppRoutingModule,
         MaterialModule,
+        NgxTranslateModule,
         BrowserAnimationsModule
     ],
     providers: [],
