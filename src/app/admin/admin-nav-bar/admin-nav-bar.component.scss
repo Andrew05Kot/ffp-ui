@@ -1,0 +1,13 @@
+a {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+
+    &.active {
+        font-weight: 700;
+    }
+}
+
+a:hover {
+    background-color: rgba(103, 58, 183, 0.1);
+}
