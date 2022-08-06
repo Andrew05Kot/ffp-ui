@@ -7,13 +7,15 @@ import { MaterialModule } from '../_modules/material/material.module';
 import { RouterModule } from "@angular/router";
 import { OrderComponent } from './order/order.component';
 import { NgxTranslateModule } from "../_modules/localization/localization.module";
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
 
 @NgModule({
     declarations: [
         AdminComponent,
         AdminDashboardComponent,
         AdminNavBarComponent,
-        OrderComponent
+        OrderComponent,
+        AdminHeaderComponent
     ],
     imports: [
         CommonModule,
