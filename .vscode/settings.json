@@ -1,0 +1,9 @@
+{
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "[html]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+}
