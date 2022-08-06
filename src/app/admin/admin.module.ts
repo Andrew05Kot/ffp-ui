@@ -12,6 +12,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { PaginatorDirective } from "../_services/pagination.directive";
 import { SalesStatisticComponent } from './dashboard/sales-statistic/sales-statistic.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -30,6 +32,7 @@ import { SalesStatisticComponent } from './dashboard/sales-statistic/sales-stati
         NgxTranslateModule,
         MatTableModule,
         MatPaginatorModule,
+        ReactiveFormsModule,
     ]
 })
 export class AdminModule {

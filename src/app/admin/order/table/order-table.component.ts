@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OrderService } from "../../../_services/api/order.service";
-import { Order } from "../../../_modules/_models/order.model";
+import { Order } from "../../../_models/order.model";
 import { MatTableDataSource } from "@angular/material/table";
-import { Page } from "../../../_modules/_models/page.model";
+import { Page } from "../../../_models/page.model";
 import { PageEvent } from "@angular/material/paginator";
 
 @Component({

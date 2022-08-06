@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Order } from "../../_modules/_models/order.model";
-import { Page } from "../../_modules/_models/page.model";
+import { Order } from "../../_models/order.model";
+import { Page } from "../../_models/page.model";
 
 @Injectable({
     providedIn: 'root'
@@ -19,10 +19,14 @@ export class OrderService {
             .set('index', index.toString())
             .set('size', size.toString());
 
-        return this.http.get<Page<Order>>(this.apiPath + '/page', { params: queryParams });
+        return this.http.get<Page<Order>>(this.apiPath + '/page', {params: queryParams});
     }
 
-    getStatistic$(): Observable<Map<String, Number>> {
-        return this.http.get<Map<String, Number>>(this.apiPath + '/statistic');
+    getStatistic$(startDate?: string, endDate?: string): Observable<Map<String, Number>> {
+        let queryParams = new HttpParams();
+        if (startDate && endDate) {
+            queryParams = new HttpParams().set('startDate', startDate.toString()).set('endDate', endDate.toString());
+        }
+        return this.http.get<Map<String, Number>>(this.apiPath + '/statistic', {params: queryParams});
     }
 }
