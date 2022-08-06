@@ -9,7 +9,7 @@ import { Page } from "../../_modules/_models/page.model";
 })
 export class OrderService {
 
-    apiPath = `http://localhost:8080/ordering/api/v1/orders/page`;
+    apiPath = `http://localhost:8080/ordering/api/v1/orders`;
 
     constructor(private http: HttpClient) {
     }
@@ -19,6 +19,10 @@ export class OrderService {
             .set('index', index.toString())
             .set('size', size.toString());
 
-        return this.http.get<Page<Order>>(this.apiPath, {params: queryParams});
+        return this.http.get<Page<Order>>(this.apiPath + '/page', { params: queryParams });
+    }
+
+    getStatistic$(): Observable<Map<String, Number>> {
+        return this.http.get<Map<String, Number>>(this.apiPath + '/statistic');
     }
 }

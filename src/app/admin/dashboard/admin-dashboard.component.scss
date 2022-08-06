@@ -26,6 +26,8 @@
         height: 50%;
 
         .overview {
+            display: flex;
+            align-items: center;
             height: 100%;
             margin: 10px 20px;
             background-color: rgba(103, 58, 183, 0.1);

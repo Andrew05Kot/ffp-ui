@@ -1,0 +1,6 @@
+<div class="graph">
+    <div *ngIf="statisticsMap?.size == 0" class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <canvas id="canvas" width="400" height="400">{{chart}}</canvas>
+</div>
