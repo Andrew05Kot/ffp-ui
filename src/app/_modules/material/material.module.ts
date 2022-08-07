@@ -21,6 +21,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatMomentDateModule, MomentDateModule } from "@angular/material-moment-adapter";
 
 @NgModule({
     exports: [
@@ -45,7 +48,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
         MatBadgeModule,
         MatAutocompleteModule,
         DragDropModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MomentDateModule,
+        MatMomentDateModule
     ],
     providers: [],
 })

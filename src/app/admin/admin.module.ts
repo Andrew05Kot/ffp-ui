@@ -11,6 +11,9 @@ import { AdminHeaderComponent } from './layout/admin-header/admin-header.compone
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { PaginatorDirective } from "../_services/pagination.directive";
+import { SalesStatisticComponent } from './dashboard/sales-statistic/sales-statistic.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -19,7 +22,8 @@ import { PaginatorDirective } from "../_services/pagination.directive";
         AdminNavBarComponent,
         OrderTableComponent,
         AdminHeaderComponent,
-        PaginatorDirective
+        PaginatorDirective,
+        SalesStatisticComponent
     ],
     imports: [
         CommonModule,
@@ -28,6 +32,7 @@ import { PaginatorDirective } from "../_services/pagination.directive";
         NgxTranslateModule,
         MatTableModule,
         MatPaginatorModule,
+        ReactiveFormsModule,
     ]
 })
 export class AdminModule {
