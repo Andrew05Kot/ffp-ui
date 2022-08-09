@@ -9,7 +9,7 @@ import { Page } from "../../_models/page.model";
 })
 export class OrderService {
 
-    apiPath = `http://localhost:8080/ordering/api/v1/orders`;
+    apiPath = `http://localhost:8765/ordering/api/v1/orders`;
 
     constructor(private http: HttpClient) {
     }
