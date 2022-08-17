@@ -15,7 +15,7 @@ export class OrderTableComponent {
     orders = new MatTableDataSource<Order>();
     page: Page<Order> | undefined;
     pageEvent: PageEvent;
-    displayedColumns = ['creationDate', 'totalPrice', 'cardName', 'cardNumber', 'paymentMethod'];
+    displayedColumns = ['createdDate', 'totalPrice', 'cardName', 'cardNumber', 'paymentMethod'];
 
     constructor(private orderService: OrderService) {
         this.pageEvent = this.getDefaultPageEvent();

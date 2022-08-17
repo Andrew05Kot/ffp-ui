@@ -1,6 +1,6 @@
 export class Order {
     constructor(public id?: number,
-                public creationDate?: string,
+                public createdDate?: string,
                 public totalPrice?: number,
                 public cardName?: string,
                 public cardNumber?: string,
@@ -13,7 +13,7 @@ export class Order {
     static fromObject(object: Order): Order {
         return new Order(
             object.id,
-            object.creationDate,
+            object.createdDate,
             object.totalPrice,
             object.cardName,
             object.cardNumber,

@@ -3,11 +3,11 @@
     <div class="table-container">
         <div>
             <mat-table [dataSource]="orders">
-                <ng-container matColumnDef="creationDate">
+                <ng-container matColumnDef="createdDate">
                     <mat-header-cell *matHeaderCellDef
-                                     class="creationDate-cell">Date
+                                     class="createdDate-cell">Date
                     </mat-header-cell>
-                    <mat-cell *matCellDef="let element" class="creationDate-cell"> {{element.creationDate}} </mat-cell>
+                    <mat-cell *matCellDef="let element" class="createdDate-cell"> {{element.createdDate}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="totalPrice">
