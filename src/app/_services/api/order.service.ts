@@ -27,6 +27,6 @@ export class OrderService {
         if (startDate && endDate) {
             queryParams = new HttpParams().set('startDate', startDate.toString()).set('endDate', endDate.toString());
         }
-        return this.http.get<Map<String, Number>>(this.apiPath + '/statistic', {params: queryParams});
+        return this.http.get<Map<String, Number>>(this.apiPath + '/statistics', {params: queryParams});
     }
 }
