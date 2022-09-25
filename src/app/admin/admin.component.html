@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
     <div class="admin-header">
-        <app-admin-header (onToggleSideNav)="opened = $event"></app-admin-header>
+        <app-admin-header (onToggleSideNav)="toggle()"></app-admin-header>
     </div>
 </mat-toolbar>
-<mat-sidenav-container>
-    <mat-sidenav [(opened)]="opened" mode="side">
+<mat-sidenav-container [@.disabled]="temporaryDisabled">
+    <mat-sidenav [(opened)]="opened" mode="side" #sidenav>
         <app-admin-nav-bar>
         </app-admin-nav-bar>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content [ngStyle]="{'left' : opened ? '20px' : '0' }">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
