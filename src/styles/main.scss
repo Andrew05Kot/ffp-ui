@@ -1,0 +1,20 @@
+@import 'reset';
+
+@import 'colors';
+@import 'mixins';
+@import 'fonts';
+
+@import 'base';
+@import 'layout';
+@import 'vendor';
+
+html,
+body {
+  margin: 0;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  background-image: linear-gradient(to right top, #bbb7ae, #b9b39d, #b3b18d, #a9af7f, #9cae72);
+  background-size: cover;
+  color: $on-base;
+}

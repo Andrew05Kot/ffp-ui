@@ -1,0 +1,14 @@
+@import 'styles/mixins';
+
+.shadow {
+    @include shadow;
+    padding: 20px;
+}
+
+.card {
+    @include card;
+    
+    &:hover {
+        @include shadow-hower;
+    }
+}

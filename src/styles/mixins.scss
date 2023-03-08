@@ -1,0 +1,16 @@
+@import 'colors';
+
+@mixin shadow {
+  box-shadow: 10px 5px 27px 0 rgb(123 139 85 / 75%);
+}
+
+@mixin shadow-hower {
+  box-shadow: 10px 5px 27px 0 rgb(108 122 73 / 75%);
+}
+
+@mixin card {
+  padding: 32px;
+  background: $base;
+  border-radius: 10px;
+  @include shadow;
+}

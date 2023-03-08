@@ -1,0 +1,16 @@
+.ffp-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 18px;
+  background: #9cae72;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0.5rem;
+
+  &:disabled {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.38);
+  }
+}
