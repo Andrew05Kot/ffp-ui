@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Date
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -22,8 +22,14 @@ const APP_DATE_FORMATS: MatDateFormats = {
 };
 
 // Services
+import { NotificationModule } from '@app/services';
 
-import { NotificationModule } from "@app/services";
+// Store
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, effects } from './store';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +40,16 @@ import { NotificationModule } from "@app/services";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NotificationModule.forRoot()
+    HttpClientModule,
+    NotificationModule.forRoot(),
+
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true,
+      }
+    }),
+    EffectsModule.forRoot(effects),
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

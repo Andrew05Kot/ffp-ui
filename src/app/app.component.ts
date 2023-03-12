@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
 
+import * as fromRoot from './store'
+import * as fromDictionaries from './store/dictionaries'
 
 @Component({
   selector: 'app-root',
@@ -7,14 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'ffp-ui';
 
-  constructor() {
+  constructor(private store: Store<fromRoot.State>) {
 
   }
-  
+
   ngOnInit(): void {
-    console.log('hello');
-    
+    this.store.dispatch(new fromDictionaries.Read());
   }
 }
