@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { markFormGroupTouched, regex, regexErrors } from '@app/shared/utils';
 
 import { ControlItem } from '@app/models/frontend';
+import { NotificationService } from "@app/services";
 // import { NotificationService } from '@app/services';
 
 @Component({
@@ -21,7 +22,8 @@ export class SharedComponent implements OnInit {
 
   showSpinner = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private notificationService: NotificationService) {
     this.isInline = true;
 
     this.items = [
@@ -122,11 +124,11 @@ export class SharedComponent implements OnInit {
   }
 
   onSuccess(): void {
-    // this.notification.success('Everything is fine!');
+    this.notificationService.success('Everything is fine!');
   }
 
   onError(): void {
-    // this.notification.error('Oops! Something is wrong');
+    this.notificationService.error('Oops! Something is wrong');
   }
 
 }

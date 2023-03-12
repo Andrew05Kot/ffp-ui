@@ -21,6 +21,9 @@ const APP_DATE_FORMATS: MatDateFormats = {
   }
 };
 
+// Services
+
+import { NotificationModule } from "@app/services";
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NotificationModule.forRoot()
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
