@@ -1,1 +1,50 @@
-<ffp-button>Test button</ffp-button>
+<h2>Form</h2>
+
+<form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
+
+  <ffp-button type="submit">Submit</ffp-button>
+  <ffp-button (click)="onPatchValue()">Patch Value</ffp-button>
+  <ffp-button (click)="onToggleInline()">Toggle Inline</ffp-button>
+  <ffp-button (click)="onToggleDisable()">Toggle Disable</ffp-button>
+  <br/><br/><br/>
+
+  <ffp-form-field label="Input" [required]="true" [control]="form.controls['input']" [isInline]="isInline"
+                  [patternError]="regexErrors.numbers">
+    <ffp-input formControlName="input"></ffp-input>
+  </ffp-form-field>
+
+  <ffp-form-field label="Password" [required]="true" [control]="form.controls['password']" [isInline]="isInline">
+    <ffp-password formControlName="password"></ffp-password>
+  </ffp-form-field>
+
+  <ffp-form-field label="Autocomplete" [required]="true" [control]="form.controls['autocomplete']"
+                  [isInline]="isInline">
+    <ffp-autocomplete formControlName="autocomplete" [items]="items"></ffp-autocomplete>
+  </ffp-form-field>
+
+  <ffp-form-field label="Select" [required]="true" [control]="form.controls['select']" [isInline]="isInline">
+    <ffp-select formControlName="select" [items]="items"></ffp-select>
+  </ffp-form-field>
+
+  <ffp-form-field label="Checkboxes" [required]="true" [control]="form.controls['checkboxes']" [isInline]="isInline">
+    <ffp-checkboxes formControlName="checkboxes" [items]="items"></ffp-checkboxes>
+  </ffp-form-field>
+
+  <ffp-form-field label="Radios" [required]="true" [control]="form.controls['radios']" [isInline]="isInline">
+    <ffp-radios formControlName="radios" [items]="items">
+    </ffp-radios>
+  </ffp-form-field>
+
+  <ffp-form-field label="Date" [required]="true" [control]="form.controls['date']" [isInline]="isInline">
+    <ffp-date formControlName="date" placeholder="Date">
+    </ffp-date>
+  </ffp-form-field>
+
+  <ffp-form-field label="Date Range" [required]="true" [control]="form.controls['dateRange']" [isInline]="isInline">
+    <ffp-date-range formControlName="dateRange">
+    </ffp-date-range>
+  </ffp-form-field>
+
+</form>
+
+<code>{{form.value | json}}</code>

@@ -1,0 +1,15 @@
+<div class="date-range">
+  <form [formGroup]="form" novalidate autocomplete="off">
+    <div class="date-range__items">
+      <ffp-date formControlName="from" (closed)="onClosed()" [placeholder]="placeholder?.from || 'From'"
+                (changed)="onChanged()" [max]="max">
+      </ffp-date>
+
+      <span class="date-range__dash">&mdash;</span>
+
+      <ffp-date formControlName="to" (closed)="onClosed()" [placeholder]="placeholder?.to || 'To'"
+                (changed)="onChanged()" [min]="min"></ffp-date>
+    </div>
+  </form>
+
+</div>
