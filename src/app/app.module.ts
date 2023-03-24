@@ -24,10 +24,16 @@ const APP_DATE_FORMATS: MatDateFormats = {
 // Services
 import { NotificationModule } from '@app/services';
 
+import { environment } from '../environments/environment';
+
 // Store
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
+const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [];
+
 import { reducers, effects } from './store';
 import { HttpClientModule } from "@angular/common/http";
 
@@ -50,6 +56,7 @@ import { HttpClientModule } from "@angular/common/http";
       }
     }),
     EffectsModule.forRoot(effects),
+    StoreDevtools
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

@@ -1,4 +1,4 @@
-import { ActionReducerMap } from "@ngrx/store";
+import { ActionReducerMap } from '@ngrx/store';
 import * as fromDictionaries from './dictionaries';
 
 export interface State {

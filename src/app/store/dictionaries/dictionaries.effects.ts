@@ -8,6 +8,7 @@ import { catchError, of, switchMap, take, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Dictionaries, Dictionary } from './dictionaries.models';
 import { ControlItem, Item } from '@app/models/frontend';
+import * as jsonCountries from '@src/assets/countries.json'
 
 type Action = fromActions.All;
 
@@ -35,12 +36,22 @@ export class DictionariesEffects {
       switchMap(() => {
         return zip(
           this.dishService.getAll$(),
-          this.establishmentService.getAll$()
+          this.establishmentService.getAll$(),
+          of((jsonCountries as any).default.map(country => ({
+              id: country.code.toUpperCase(),
+              name: country.name,
+              icon: {
+                src: null,
+                cssClass: 'fflag fflaf-' + country.code.toUpperCase()
+              }
+            })
+          ))
         ).pipe(
-          map(([dishes, establishments]) => {
+          map(([dishes, establishments, countries]) => {
             const dictionaries: Dictionaries = {
               dishes: addDictionary(dishes),
-              establishments: addDictionary(establishments)
+              establishments: addDictionary(establishments?.items),
+              countries: addDictionary(countries)
             };
             return new fromActions.ReadSuccess(dictionaries);
           }),

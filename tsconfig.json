@@ -8,7 +8,7 @@
         "app/*"
       ],
       "@src/*": [
-        "*"
+        "./*"
       ]
     },
     "outDir": "./dist/out-tsc",
@@ -30,7 +30,8 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "resolveJsonModule": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

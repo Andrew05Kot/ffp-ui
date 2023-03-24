@@ -17,4 +17,6 @@ body {
   background-image: linear-gradient(to right top, #bbb7ae, #b9b39d, #b3b18d, #a9af7f, #9cae72);
   background-size: cover;
   color: $on-base;
+  height: auto;
+  min-height: 100vh;
 }
