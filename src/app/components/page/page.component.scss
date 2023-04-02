@@ -1,0 +1,14 @@
+@import 'styles/mixins';
+
+.ffp-page {
+  max-width: 90%;
+  height: 86vh;
+  margin: 16px auto;
+
+  background: $base;
+  border-radius: 10px;
+  @include shadow;
+  padding: 32px;
+
+  position: relative;
+}

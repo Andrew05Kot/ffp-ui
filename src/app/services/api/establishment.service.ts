@@ -1,16 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '@src/environments/environment.dev';
+import { EstablishmentParams } from '@app/models/backend';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstablishmentService {
 
+  private static EstablishmentApiName: string = 'establishment';
+
   constructor(public http: HttpClient) {
   }
 
-  getAll$(): Observable<any> {
-    return this.http.get<any>('http://localhost:8084/api/v1/establishments/', {});
+  getAll$(establishmentParams: EstablishmentParams): Observable<any> {
+    const params = establishmentParams ?
+      {
+        pageIndex: establishmentParams.pageIndex.toString(),
+        pageSize: establishmentParams.pageSize.toString()
+      }
+      : {};
+
+    return this.http.get<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, {params: params});
   }
 }

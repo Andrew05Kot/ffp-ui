@@ -3,11 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from '@app/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Date
-import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
+// Services
+import { NotificationModule } from '@app/services';
+
+import { environment } from '../environments/environment';
+
+// Store
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -21,21 +31,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
   }
 };
 
-// Services
-import { NotificationModule } from '@app/services';
-
-import { environment } from '../environments/environment';
-
-// Store
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
 
 const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [];
-
-import { reducers, effects } from './store';
-import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -48,14 +45,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserAnimationsModule,
     HttpClientModule,
     NotificationModule.forRoot(),
-
-    StoreModule.forRoot(reducers, {
-      runtimeChecks: {
-        strictActionImmutability: true,
-        strictStateImmutability: true,
-      }
-    }),
-    EffectsModule.forRoot(effects),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot({}),
     StoreDevtools
   ],
   providers: [

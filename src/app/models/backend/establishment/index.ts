@@ -7,3 +7,18 @@ export interface Establishment {
   createdDate?: string;
   lastModifiedDate?: string;
 }
+
+export interface EstablishmentResponse {
+  items: Establishment[]
+  count: number;
+  pageIndex: number;
+  pageSize: number;
+}
+
+export interface EstablishmentParams {
+  filter: string;
+  sortDirection: 'asc' | 'desc'| '';
+  sortField: string;
+  pageIndex: number;
+  pageSize: number;
+}
