@@ -17,7 +17,7 @@ export interface EstablishmentResponse {
 
 export interface EstablishmentParams {
   filter: string;
-  sortDirection: 'asc' | 'desc'| '';
+  sortDirection: 'ASC' | 'DESC'| '';
   sortField: string;
   pageIndex: number;
   pageSize: number;

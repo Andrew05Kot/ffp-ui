@@ -18,9 +18,13 @@ export class EstablishmentService {
     const params = establishmentParams ?
       {
         pageIndex: establishmentParams.pageIndex.toString(),
-        pageSize: establishmentParams.pageSize.toString()
+        pageSize: establishmentParams.pageSize.toString(),
+        sortDirection: establishmentParams.sortDirection.toString().toUpperCase(),
+        sortField: establishmentParams.sortField.toString(),
       }
       : {};
+
+    console.log('params >> ', params)
 
     return this.http.get<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, {params: params});
   }
