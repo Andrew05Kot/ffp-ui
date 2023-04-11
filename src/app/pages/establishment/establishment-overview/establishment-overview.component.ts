@@ -25,7 +25,15 @@ export class EstablishmentOverviewComponent implements OnInit, AfterViewInit, On
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'country', 'city', 'street', 'houseNumber', 'createdDate', 'lastModifiedDate'];
+  displayedColumns: string[] = [
+    'id',
+    'country',
+    'city',
+    'street',
+    'houseNumber',
+    'createdDate',
+    'lastModifiedDate'
+  ];
   dataSource: MatTableDataSource<Establishment>;
   establishmentTotal: number;
   noData: Establishment[] = [<Establishment>{}];

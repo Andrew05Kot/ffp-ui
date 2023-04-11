@@ -11,7 +11,7 @@ export function establishmentReducer(state = initialEstablishmentState, action: 
       return { ...state, loading: true };
     }
     case EstablishmentActionType.LoadSuccess: {
-      return establishmentAdapter.addMany(action.payload.items, {
+      return establishmentAdapter.setAll(action.payload.items, {
         ...state,
         error: false,
         loading: false,
