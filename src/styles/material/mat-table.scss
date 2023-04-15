@@ -5,3 +5,21 @@
 .mat-mdc-paginator {
   background: transparent;
 }
+
+.mat-mdc-table {
+  .mdc-data-table__row {
+    height: 74px;
+
+    .mdc-data-table__cell {
+      font-size: 16px;
+    }
+  }
+
+  .mat-sort-header-content {
+    font-size: 16px;
+  }
+}
+
+.mat-mdc-paginator-container {
+  font-size: 16px;
+}

@@ -4,37 +4,37 @@
 
     <ng-container matColumnDef="id">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element.id}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{element.id}}</td>
     </ng-container>
 
     <ng-container matColumnDef="country">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Country</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['country']}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{element['country']}}</td>
     </ng-container>
 
     <ng-container matColumnDef="city">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>City</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['city']}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{element['city']}}</td>
     </ng-container>
 
     <ng-container matColumnDef="street">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Street</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['street']}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{element['street']}}</td>
     </ng-container>
 
     <ng-container matColumnDef="houseNumber">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>House number</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['houseNumber']}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{element['houseNumber']}}</td>
     </ng-container>
 
     <ng-container matColumnDef="createdDate">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Created date</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['createdDate']}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['createdDate'])}}</td>
     </ng-container>
 
     <ng-container matColumnDef="lastModifiedDate">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Last modified date</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['lastModifiedDate']}} </td>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['lastModifiedDate'])}} </td>
     </ng-container>
 
     <ng-container matColumnDef="noData">

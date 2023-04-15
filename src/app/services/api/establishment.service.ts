@@ -24,8 +24,6 @@ export class EstablishmentService {
       }
       : {};
 
-    console.log('params >> ', params)
-
     return this.http.get<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, {params: params});
   }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { EstablishmentRoutingModule } from './establishment-routing.module';
 import {
@@ -31,6 +31,9 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class EstablishmentModule {

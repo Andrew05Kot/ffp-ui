@@ -14,6 +14,7 @@ import { GlobalState } from '@app/store/establishment/global.state';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Establishment, EstablishmentParams } from '@app/models/backend';
 import { EstablishmentLoadAction } from '@app/store/establishment/establishment.action';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-establishment-overview',
@@ -45,7 +46,8 @@ export class EstablishmentOverviewComponent implements OnInit, AfterViewInit, On
   private filter: string = '';
   private subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<GlobalState>) {
+  constructor(private store: Store<GlobalState>,
+              private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -84,6 +86,19 @@ export class EstablishmentOverviewComponent implements OnInit, AfterViewInit, On
     );
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  retry(): void {
+    this.loadEstablishments();
+  }
+
+  formatDate(date: string): string {
+    const formattedDate = this.datePipe.transform(date, 'dd.MM.yyyy HH:mm');
+    return formattedDate || '';
+  }
+
   private loadEstablishments(): void {
     this.store.dispatch(new EstablishmentLoadAction(
       <EstablishmentParams>{
@@ -100,14 +115,6 @@ export class EstablishmentOverviewComponent implements OnInit, AfterViewInit, On
     this.dataSource = new MatTableDataSource(
       establishments?.length ? establishments : this.noData
     );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  retry(): void {
-    this.loadEstablishments();
   }
 
 }
