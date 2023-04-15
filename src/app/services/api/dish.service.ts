@@ -1,15 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { RequestParams } from '@app/models/backend';
+import { environment } from '@src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor(public http: HttpClient) { }
+  private static DishApiName: string = 'dish';
 
-  getAll$(): Observable<any> {
-    return this.http.get<any>('http://localhost:8081/api/v1/dishes/', {});
+  constructor(public http: HttpClient) {
+  }
+
+  getAll$(requestParams: RequestParams): Observable<any> {
+    const params = requestParams ?
+      {
+        pageIndex: requestParams.pageIndex.toString(),
+        pageSize: requestParams.pageSize.toString(),
+        sortDirection: requestParams.sortDirection.toString().toUpperCase(),
+        sortField: requestParams.sortField.toString(),
+      }
+      : {};
+
+    return this.http.get<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/`, {params: params});
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@src/environments/environment.dev';
-import { EstablishmentParams } from '@app/models/backend';
+import { RequestParams } from '@app/models/backend';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,13 @@ export class EstablishmentService {
   constructor(public http: HttpClient) {
   }
 
-  getAll$(establishmentParams: EstablishmentParams): Observable<any> {
-    const params = establishmentParams ?
+  getAll$(requestParams: RequestParams): Observable<any> {
+    const params = requestParams ?
       {
-        pageIndex: establishmentParams.pageIndex.toString(),
-        pageSize: establishmentParams.pageSize.toString(),
-        sortDirection: establishmentParams.sortDirection.toString().toUpperCase(),
-        sortField: establishmentParams.sortField.toString(),
+        pageIndex: requestParams.pageIndex.toString(),
+        pageSize: requestParams.pageSize.toString(),
+        sortDirection: requestParams.sortDirection.toString().toUpperCase(),
+        sortField: requestParams.sortField.toString(),
       }
       : {};
 

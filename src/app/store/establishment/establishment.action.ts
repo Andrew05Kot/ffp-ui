@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { EstablishmentParams, EstablishmentResponse } from '@app/models/backend';
+import { RequestParams, EstablishmentResponse } from '@app/models/backend';
 
 export enum EstablishmentActionType {
   Loading = '[Establishment] Loading',
@@ -9,7 +9,7 @@ export enum EstablishmentActionType {
 
 export class EstablishmentLoadAction implements Action {
   public readonly type = EstablishmentActionType.Loading;
-  constructor(public payload: EstablishmentParams) {}
+  constructor(public payload: RequestParams) {}
 }
 
 export class EstablishmentLoadSuccessAction implements Action {

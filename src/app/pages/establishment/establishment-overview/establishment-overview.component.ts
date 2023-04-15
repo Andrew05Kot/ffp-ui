@@ -12,7 +12,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { GlobalState } from '@app/store/establishment/global.state';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { Establishment, EstablishmentParams } from '@app/models/backend';
+import { Establishment, RequestParams } from '@app/models/backend';
 import { EstablishmentLoadAction } from '@app/store/establishment/establishment.action';
 import { DatePipe } from '@angular/common';
 
@@ -101,7 +101,7 @@ export class EstablishmentOverviewComponent implements OnInit, AfterViewInit, On
 
   private loadEstablishments(): void {
     this.store.dispatch(new EstablishmentLoadAction(
-      <EstablishmentParams>{
+      <RequestParams>{
         filter: this.filter.toLocaleLowerCase(),
         pageIndex: this.paginator.pageIndex,
         pageSize: this.paginator.pageSize,

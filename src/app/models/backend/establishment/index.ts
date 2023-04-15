@@ -14,11 +14,3 @@ export interface EstablishmentResponse {
   pageIndex: number;
   pageSize: number;
 }
-
-export interface EstablishmentParams {
-  filter: string;
-  sortDirection: 'ASC' | 'DESC'| '';
-  sortField: string;
-  pageIndex: number;
-  pageSize: number;
-}

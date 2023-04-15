@@ -54,7 +54,7 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></tr>
     <ng-container *ngIf="establishmentTotal && !loading">
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="establishment-row"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </ng-container>
     <ng-container *ngIf="!establishmentTotal || loading">
       <tr mat-row *matRowDef="let row; columns: ['noData'];" class="no-data-row"></tr>

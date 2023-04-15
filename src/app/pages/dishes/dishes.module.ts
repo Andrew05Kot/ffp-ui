@@ -1,14 +1,37 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { DishesRoutingModule } from './dishes-routing.module';
-
+import { DishesOverviewComponent } from '@app/pages/dishes/dishes-overview/dishes-overview.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { PageModule } from '@app/components';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { dishReducer } from '@app/store/dish/dish.reducer';
+import { DishEffect } from '@app/store/dish/dish.effect';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DishesOverviewComponent
+  ],
   imports: [
     CommonModule,
-    DishesRoutingModule
+    PageModule,
+    DishesRoutingModule,
+
+    StoreModule.forFeature('Dish', dishReducer),
+    EffectsModule.forFeature(DishEffect),
+
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+
+  ],
+  providers: [
+    DatePipe
   ]
 })
-export class DishesModule { }
+export class DishesModule {
+}

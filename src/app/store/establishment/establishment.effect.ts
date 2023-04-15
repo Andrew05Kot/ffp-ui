@@ -10,7 +10,7 @@ import {
   EstablishmentLoadFailAction,
   EstablishmentLoadSuccessAction,
 } from '@app/store/establishment/establishment.action';
-import { EstablishmentParams, EstablishmentResponse } from '@app/models/backend';
+import { RequestParams, EstablishmentResponse } from '@app/models/backend';
 
 @Injectable()
 export class EstablishmentEffect {
@@ -26,7 +26,7 @@ export class EstablishmentEffect {
       this.actions$
         .pipe(ofType<EstablishmentLoadAction>(EstablishmentActionType.Loading),
           map(action => action.payload),
-          switchMap((params: EstablishmentParams) =>
+          switchMap((params: RequestParams) =>
             this.service.getAll$(params).pipe(
               map((response: EstablishmentResponse) => new EstablishmentLoadSuccessAction(response)),
               catchError((error) => of(new EstablishmentLoadFailAction(error)))
