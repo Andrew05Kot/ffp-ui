@@ -23,9 +23,13 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
 
   displayedColumns: string[] = [
     'id',
+    'image',
     'name',
+    'category',
     'description',
-    'price'
+    'price',
+    'createdDate',
+    'lastModifiedDate'
   ];
   dataSource: MatTableDataSource<Dish>;
   dishesTotal: number;

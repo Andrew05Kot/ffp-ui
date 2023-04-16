@@ -12,9 +12,24 @@
       <td mat-cell class="dc-content" *matCellDef="let element">{{element['name']}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="image">
+      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Picture</th>
+      <td mat-cell class="dc-content dish__image-cell" *matCellDef="let element">
+        <img class="dish__image-img" src="{{element['imageUrl']}}">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{element['category']['name']}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="description">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Description</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['description']}}</td>
+      <td mat-cell class="dc-content dish__description-cell" *matCellDef="let element"
+          matTooltip="{{element['description']}}">
+        {{element['description']}}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="price">
@@ -22,15 +37,15 @@
       <td mat-cell class="dc-content" *matCellDef="let element">{{element['price']}}</td>
     </ng-container>
 
-    <!--    <ng-container matColumnDef="createdDate">-->
-    <!--      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Created date</th>-->
-    <!--      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['createdDate'])}}</td>-->
-    <!--    </ng-container>-->
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Created date</th>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['createdDate'])}}</td>
+    </ng-container>
 
-    <!--    <ng-container matColumnDef="lastModifiedDate">-->
-    <!--      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Last modified date</th>-->
-    <!--      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['lastModifiedDate'])}} </td>-->
-    <!--    </ng-container>-->
+    <ng-container matColumnDef="lastModifiedDate">
+      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Last modified date</th>
+      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['lastModifiedDate'])}} </td>
+    </ng-container>
 
     <ng-container matColumnDef="noData">
       <td mat-cell class="dc-label no-data-cell" *matCellDef="let element" [attr.colspan]="displayedColumns.length">

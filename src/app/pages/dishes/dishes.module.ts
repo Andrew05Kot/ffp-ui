@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { dishReducer } from '@app/store/dish/dish.reducer';
 import { DishEffect } from '@app/store/dish/dish.effect';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { DishEffect } from '@app/store/dish/dish.effect';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-
+    MatTooltipModule
   ],
   providers: [
     DatePipe

@@ -4,6 +4,7 @@ export interface Dish {
   description: string;
   price: number;
   category: Category;
+  imageUrl: string;
 }
 
 export interface DishResponse {
