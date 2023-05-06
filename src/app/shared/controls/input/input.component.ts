@@ -15,6 +15,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() placeholder: string;
+  @Input() type: 'search' | 'default' = 'default';
   @Output() changed = new EventEmitter<string>();
 
   value: string;

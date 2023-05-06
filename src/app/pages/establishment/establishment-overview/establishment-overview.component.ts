@@ -102,11 +102,11 @@ export class EstablishmentOverviewComponent implements OnInit, AfterViewInit, On
   private loadEstablishments(): void {
     this.store.dispatch(new EstablishmentLoadAction(
       <RequestParams>{
-        filter: this.filter.toLocaleLowerCase(),
         pageIndex: this.paginator.pageIndex,
         pageSize: this.paginator.pageSize,
         sortDirection: this.sort.direction,
-        sortField: this.sort.active
+        sortField: this.sort.active,
+        search: this.filter.toLocaleLowerCase(),
       }
     ));
   }

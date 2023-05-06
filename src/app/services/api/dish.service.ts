@@ -19,8 +19,9 @@ export class DishService {
       {
         pageIndex: requestParams.pageIndex.toString(),
         pageSize: requestParams.pageSize.toString(),
-        sortDirection: requestParams.sortDirection.toString().toUpperCase(),
-        sortField: requestParams.sortField.toString(),
+        sortDirection: requestParams.sortDirection.toUpperCase(),
+        sortField: requestParams.sortField,
+        search: requestParams.search,
       }
       : {};
 

@@ -28,7 +28,9 @@ export class DishEffect {
           map(action => action.payload),
           switchMap((params: RequestParams) =>
             this.service.getAll$(params).pipe(
-              map((response: DishResponse) => new DishLoadSuccessAction(response)),
+              map((response: DishResponse) => {
+                return new DishLoadSuccessAction(response)
+              }),
               catchError((error) => of(new DishLoadFailAction(error)))
             )
           )

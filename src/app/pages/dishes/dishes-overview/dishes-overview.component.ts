@@ -38,8 +38,11 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
   error$: Observable<boolean>;
   filterSubject = new Subject<string>();
   defaultSort: Sort = {active: 'id', direction: 'asc'};
+  searchText: string = '';
 
-  private filter: string = '';
+  private searchDirection: string = '';
+  private searchField: string = '';
+  private search: string = '';
   private subscription: Subscription = new Subscription();
 
   constructor(private store: Store<GlobalState>,
@@ -67,7 +70,7 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
       distinctUntilChanged(),
       tap((value: string) => {
         this.paginator.pageIndex = 0;
-        this.filter = value;
+        this.searchText = '';
       })
     );
 
@@ -90,6 +93,18 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
     this.loadDishes();
   }
 
+  onSearchTyping(): void {
+    if (this.searchText == '') {
+      this.search = '';
+      this.loadDishes();
+      return;
+    }
+    this.searchField = 'text';
+    this.searchDirection = ':';
+    this.search = this.searchField + this.searchDirection + this.searchText;
+    this.loadDishes();
+  }
+
   formatDate(date: string): string {
     const formattedDate = this.datePipe.transform(date, 'dd.MM.yyyy HH:mm');
     return formattedDate || '';
@@ -98,11 +113,11 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
   private loadDishes(): void {
     this.store.dispatch(new DishLoadAction(
       <RequestParams>{
-        filter: this.filter.toLocaleLowerCase(),
         pageIndex: this.paginator.pageIndex,
         pageSize: this.paginator.pageSize,
         sortDirection: this.sort.direction,
-        sortField: this.sort.active
+        sortField: this.sort.active,
+        search: this.search
       }
     ));
   }

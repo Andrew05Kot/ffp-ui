@@ -1,4 +1,13 @@
 <ffp-page>
+  <div class="table__tool-bar">
+    <div class="tool-bar__searching">
+      <ffp-input (keyup)="onSearchTyping()"
+                 [(ngModel)]="searchText"
+                 [type]="'search'"
+                 placeholder="Search">
+      </ffp-input>
+    </div>
+  </div>
   <table mat-table [dataSource]="dataSource" matSort matSortDisableClear="true"
          [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
 
