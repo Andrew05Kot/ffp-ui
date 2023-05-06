@@ -94,6 +94,7 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   onSearchTyping(): void {
+    this.paginator.pageIndex = 0;
     if (this.searchText == '') {
       this.search = '';
       this.loadDishes();
