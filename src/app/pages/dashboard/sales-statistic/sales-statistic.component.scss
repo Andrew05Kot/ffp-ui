@@ -1,0 +1,27 @@
+.sales-statistic-container {
+  background-color: rgba(103, 58, 183, 0.1);
+  height: 510px;
+  width: 630px;
+
+  .date-picker {
+    margin-bottom: 7px;
+  }
+
+  .graph {
+    width: 600px;
+    height: 400px;
+    margin-bottom: 5px;
+
+    &.azure {
+      background-color: azure;
+    }
+  }
+}
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
