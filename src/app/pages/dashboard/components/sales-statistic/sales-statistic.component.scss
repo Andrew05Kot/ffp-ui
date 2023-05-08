@@ -1,3 +1,18 @@
+@import 'styles/mixins';
+
+.shadow {
+  @include shadow;
+  padding: 20px;
+}
+
+.card {
+  @include card;
+
+  &:hover {
+    @include shadow-hower;
+  }
+}
+
 .sales-statistic-container {
   background-color: rgba(103, 58, 183, 0.1);
   height: 510px;

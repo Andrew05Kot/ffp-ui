@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { OrderService } from '@app/pages/dashboard/order.service';
+import { OrderService } from '@app/services/api/order.service';
 
 export const MY_DATE_FORMATS = {
   parse: {

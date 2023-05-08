@@ -1,3 +1,18 @@
+@import 'styles/mixins';
+
+.shadow {
+  @include shadow;
+  padding: 20px;
+}
+
+.card {
+  @include card;
+
+  &:hover {
+    @include shadow-hower;
+  }
+}
+
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -16,7 +31,6 @@
         margin: 15px;
         width: 40%;
         height: 100%;
-        background-color: rgba(103, 58, 183, 0.1);
       }
     }
   }
@@ -27,18 +41,6 @@
       align-items: center;
       height: 100%;
       margin: 10px 20px;
-    }
-  }
-
-  .bottom-container {
-    height: 180px;
-    margin-top: 15px;
-    margin-bottom: 20px;
-
-    .additional-info {
-      height: 100%;
-      margin: 10px 20px;
-      background-color: rgba(103, 58, 183, 0.1);
     }
   }
 }

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Page } from '@app/pages/dashboard/page.model';
-import { Order } from '@app/pages/dashboard/order.model';
 import { environment } from '@src/environments/environment.dev';
+import { RequestParams } from '@app/models/backend';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +10,22 @@ import { environment } from '@src/environments/environment.dev';
 export class OrderService {
 
   private static OrderingApiName: string = 'ordering';
-  apiPath = `http://localhost:8080/ordering/api/v1/orders`;
 
   constructor(private http: HttpClient) {
   }
 
-  getPage$(index: number, size: number): Observable<Page<Order>> {
-    let queryParams = new HttpParams()
-      .set('index', index.toString())
-      .set('size', size.toString());
+  getAll$(requestParams: RequestParams): Observable<any> {
+    const params = requestParams ?
+      {
+        pageIndex: requestParams.pageIndex.toString(),
+        pageSize: requestParams.pageSize.toString(),
+        sortDirection: requestParams.sortDirection.toUpperCase(),
+        sortField: requestParams.sortField,
+        search: requestParams.search,
+      }
+      : {};
 
-    return this.http.get<Page<Order>>(this.apiPath + '/page', {params: queryParams});
+    return this.http.get<any>(`${environment.apiUrl}/${OrderService.OrderingApiName}/api/v1/orders/`, {params: params});
   }
 
   getStatistic$(startDate?: string, endDate?: string): Observable<Map<String, Number>> {

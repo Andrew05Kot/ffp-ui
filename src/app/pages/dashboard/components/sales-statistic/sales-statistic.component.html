@@ -1,4 +1,4 @@
-<mat-card class="sales-statistic-container">
+<div class="card">
   <div class="date-picker" *ngIf="!isLoading">
     <mat-form-field appearance="fill">
       <mat-label>Enter a date range</mat-label>
@@ -20,4 +20,4 @@
   <div class="graph" [ngClass]="{'azure': !isLoading}">
     <canvas id="canvas" width="600" height="400">{{chart}}</canvas>
   </div>
-</mat-card>
+</div>

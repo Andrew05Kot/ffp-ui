@@ -1,5 +1,6 @@
 export * from './establishment';
 export * from './dish';
+export * from './ordering';
 
 export interface RequestParams {
   sortDirection: 'ASC' | 'DESC' | '';
