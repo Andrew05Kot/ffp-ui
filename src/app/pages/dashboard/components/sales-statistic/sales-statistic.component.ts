@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
@@ -35,7 +35,8 @@ export class SalesStatisticComponent implements OnInit {
     end: new FormControl(),
   });
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService,
+              private cdr: ChangeDetectorRef) {
     Chart.register(...registerables);
   }
 
@@ -70,6 +71,7 @@ export class SalesStatisticComponent implements OnInit {
       const orderTotal = Object.values(response);
 
       this.drawChart(orderDate, orderTotal);
+      this.cdr.markForCheck();
     });
   }
 
