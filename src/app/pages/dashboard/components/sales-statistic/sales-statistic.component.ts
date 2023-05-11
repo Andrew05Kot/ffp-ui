@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { OrderService } from '@app/services/api/order.service';
+import { OrderingService } from '@app/services/api/ordering.service';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -35,7 +35,7 @@ export class SalesStatisticComponent implements OnInit {
     end: new FormControl(),
   });
 
-  constructor(private orderService: OrderService,
+  constructor(private orderService: OrderingService,
               private cdr: ChangeDetectorRef) {
     Chart.register(...registerables);
   }

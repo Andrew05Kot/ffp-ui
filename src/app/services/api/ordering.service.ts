@@ -7,7 +7,7 @@ import { RequestParams } from '@app/models/backend';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class OrderingService {
 
   private static OrderingApiName: string = 'ordering';
 
@@ -20,12 +20,11 @@ export class OrderService {
         pageIndex: requestParams.pageIndex.toString(),
         pageSize: requestParams.pageSize.toString(),
         sortDirection: requestParams.sortDirection.toUpperCase(),
-        sortField: requestParams.sortField,
-        search: requestParams.search,
+        sortField: requestParams.sortField
       }
       : {};
 
-    return this.http.get<any>(`${environment.apiUrl}/${OrderService.OrderingApiName}/api/v1/orders/`, {params: params});
+    return this.http.get<any>(`${environment.apiUrl}/${OrderingService.OrderingApiName}/api/v1/orders/`, {params: params});
   }
 
   getStatistic$(startDate?: string, endDate?: string): Observable<Map<String, Number>> {
@@ -33,6 +32,6 @@ export class OrderService {
     if (startDate && endDate) {
       queryParams = new HttpParams().set('startDate', startDate.toString()).set('endDate', endDate.toString());
     }
-    return this.http.get<Map<String, Number>>(`${environment.apiUrl}/${OrderService.OrderingApiName}/api/v1/orders/statistics`, {params: queryParams});
+    return this.http.get<Map<String, Number>>(`${environment.apiUrl}/${OrderingService.OrderingApiName}/api/v1/orders/statistics`, {params: queryParams});
   }
 }

@@ -6,7 +6,8 @@ export interface Ordering {
   cardNumber?: string,
   expiration?: string,
   cvv?: string,
-  paymentMethod?: string
+  paymentMethod?: string,
+  selectedCategories?: string[]
 }
 
 export interface OrderingResponse {
@@ -15,3 +16,4 @@ export interface OrderingResponse {
   pageIndex: number;
   pageSize: number;
 }
+
