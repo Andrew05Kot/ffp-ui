@@ -15,6 +15,10 @@
 .dish__image-cell {
 
   .dish__image-img {
-    width: 100px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
   }
 }
