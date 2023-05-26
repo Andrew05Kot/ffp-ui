@@ -14,3 +14,8 @@
   border-radius: 10px;
   @include shadow;
 }
+
+@mixin gradient-background() {
+  background-image: linear-gradient(to right top, #bbb7ae, #b9b39d, #b3b18d, #a9af7f, #9cae72);
+  background-size: cover;
+}

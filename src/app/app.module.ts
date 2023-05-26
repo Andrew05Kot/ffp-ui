@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from '@app/components';
+import { HeaderComponent, SidenavComponent } from '@app/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Date
@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutComponent } from './components/layout/layout.component';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -37,7 +38,9 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidenavComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
