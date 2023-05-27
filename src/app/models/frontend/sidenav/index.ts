@@ -1,4 +1,12 @@
-export const navbarData = [
+export interface SidenavItem {
+  routeLink: string,
+  icon?: string,
+  label: string,
+  expanded?: boolean,
+  subItems?: SidenavItem[]
+}
+
+export const navbarData: SidenavItem[] = [
   {
     routeLink: 'dashboard',
     icon: 'fal fa-home',
@@ -12,7 +20,21 @@ export const navbarData = [
   {
     routeLink: 'establishment',
     icon: 'fal fa-university',
-    label: 'Establishments'
+    label: 'Establishments',
+    subItems: [
+      {
+        routeLink: 'establishment',
+        label: 'Overview'
+      },
+      {
+        routeLink: 'establishment/map',
+        label: 'All-Map'
+      },
+      {
+        routeLink: 'establishment/list',
+        label: 'List'
+      }
+    ]
   },
   {
     routeLink: 'dishes',

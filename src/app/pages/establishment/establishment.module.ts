@@ -14,11 +14,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { EstablishmentsMapComponent } from './establishments-map/establishments-map.component';
+import { EstablishmentsListComponent } from './establishments-list/establishments-list.component';
 
 
 @NgModule({
   declarations: [
-    EstablishmentOverviewComponent
+    EstablishmentOverviewComponent,
+    EstablishmentsMapComponent,
+    EstablishmentsListComponent
   ],
   imports: [
     CommonModule,

@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/layout/layout.component';
+import { SubLevelMenuComponent } from './components/sidenav/sub-level-menu.component';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -40,7 +41,8 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
     AppComponent,
     HeaderComponent,
     SidenavComponent,
-    LayoutComponent
+    LayoutComponent,
+    SubLevelMenuComponent,
   ],
   imports: [
     BrowserModule,
