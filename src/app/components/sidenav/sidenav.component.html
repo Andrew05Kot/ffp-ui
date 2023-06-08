@@ -11,6 +11,7 @@
       <li class="sidenav-nav-item" *ngFor="let data of navbarData">
         <a class="sidenav-nav-link"
            (click)="handleClick(data)"
+           [routerLink]="data.routeLink"
            *ngIf="data?.subItems?.length > 0"
            [ngClass]="getActiveClass(data)"
         >

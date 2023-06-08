@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { EstablishmentsMapComponent } from './establishments-map/establishments-map.component';
 import { EstablishmentsListComponent } from './establishments-list/establishments-list.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { EstablishmentsListComponent } from './establishments-list/establishment
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    LeafletModule
   ],
   providers: [
     DatePipe

@@ -69,6 +69,7 @@ export class SidenavComponent implements OnInit {
   }
 
   shrinkItems(item: SidenavItem): void {
+    console.log('item >> ', item)
     if (!this.multiple) {
       this.navbarData.forEach(subItem => {
         subItem.expanded = item === subItem && subItem.expanded;

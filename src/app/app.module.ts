@@ -20,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SubLevelMenuComponent } from './components/sidenav/sub-level-menu.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -32,7 +33,6 @@ const APP_DATE_FORMATS: MatDateFormats = {
     monthYearA11yLabel: { year: 'numeric', month: 'long' }
   }
 };
-
 
 const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [];
 
@@ -52,7 +52,8 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
     NotificationModule.forRoot(),
     StoreModule.forRoot({}),
     EffectsModule.forRoot({}),
-    StoreDevtools
+    StoreDevtools,
+    LeafletModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
