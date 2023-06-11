@@ -1,6 +1,5 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData, SidenavItem, SidenavToggle } from '@app/models/frontend';
-import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
 import { fadeInOut, rotate } from '@app/models/frontend/sidenav/animation';
 import { Router } from '@angular/router';
 
@@ -69,7 +68,6 @@ export class SidenavComponent implements OnInit {
   }
 
   shrinkItems(item: SidenavItem): void {
-    console.log('item >> ', item)
     if (!this.multiple) {
       this.navbarData.forEach(subItem => {
         subItem.expanded = item === subItem && subItem.expanded;

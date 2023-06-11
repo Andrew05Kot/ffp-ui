@@ -19,7 +19,7 @@ export const navbarData: SidenavItem[] = [
   },
   {
     routeLink: 'establishment',
-    icon: 'fal fa-university',
+    icon: 'fal fa-map-marker',
     label: 'Establishments',
     subItems: [
       {
