@@ -1,12 +1,15 @@
+@import 'styles/colors';
+
 .mat-mdc-table {
-  background: transparent;
+  background-color: $base-light;
 }
 
 .mat-mdc-paginator {
-  background: transparent;
+  background-color: $base-light;
 }
 
 .mat-mdc-table {
+
   .mdc-data-table__row {
     height: 74px;
 

@@ -1,45 +1,40 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatSort, Sort } from '@angular/material/sort';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Dish, RequestParams } from '@app/models/backend';
+import { MatSort, Sort } from '@angular/material/sort';
 import { debounceTime, merge, Observable, Subject, Subscription, tap } from 'rxjs';
-import { select, Store } from '@ngrx/store';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
+import { RequestParams } from '@app/models/backend';
+import { MemoizedSelector, select, Store } from '@ngrx/store';
 import { GlobalState } from '@app/store/dish/global.state';
 import { DatePipe } from '@angular/common';
-import { distinctUntilChanged } from 'rxjs/operators';
-import { selectAllDishes, selectDishError, selectDishesTotal, selectDishLoading } from '@app/store/dish/dish.selector';
 import { DishLoadAction } from '@app/store/dish/dish.action';
 
+export class IColumnTemplateRef {
+  [columnName: string]: TemplateRef<any>;
+}
+
 @Component({
-  selector: 'app-dishes-overview',
-  templateUrl: './dishes-overview.component.html',
-  styleUrls: ['./dishes-overview.component.scss']
+  selector: 'ffp-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
-export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  displayedColumns: string[] = [
-    'id',
-    'imageUrl',
-    'name',
-    'category',
-    'description',
-    'price',
-    'createdDate',
-    'lastModifiedDate'
-  ];
+  @Input() displayedColumns: string[];
+  @Input() selectAll: MemoizedSelector<any, any>;
+  @Input() selectTotal: MemoizedSelector<any, any>;
+  @Input() actionName: string;
+  @Input() selectItemLoading: MemoizedSelector<object, boolean, any>;
+  @Input() selectItemsError: MemoizedSelector<object, boolean, any>;
+  @Input() columnTemplateRefs: IColumnTemplateRef = {};
 
-  protected readonly selectAllDishes = selectAllDishes;
-  protected readonly selectDishesTotal = selectDishesTotal;
-  protected readonly selectDishLoading = selectDishLoading;
-  protected readonly selectDishError = selectDishError;
-
-  dataSource: MatTableDataSource<Dish>;
-  dishesTotal: number;
-  noData: Dish[] = [<Dish>{}];
+  dataSource: MatTableDataSource<any>;
+  total: number;
+  noData: any[] = [<any>{}];
   loading: boolean;
   error$: Observable<boolean>;
   filterSubject = new Subject<string>();
@@ -51,27 +46,26 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
   private search: string = '';
   private subscription: Subscription = new Subscription();
 
-
   constructor(private store: Store<GlobalState>,
               private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
-    this.store.pipe(select(selectAllDishes)).subscribe(dishes => this.initializeData(dishes));
-    this.store.pipe(select(selectDishesTotal)).subscribe(total => this.dishesTotal = total);
+    this.store.pipe(select(this.selectAll)).subscribe(dishes => this.initializeData(dishes));
+    this.store.pipe(select(this.selectTotal)).subscribe(total => this.total = total);
     this.subscription.add(this.store.pipe(
-      select(selectDishLoading))
+      select(this.selectItemLoading))
       .subscribe(loading => {
         if (loading) {
           this.dataSource = new MatTableDataSource(this.noData);
         }
         this.loading = loading;
       }));
-    this.error$ = this.store.pipe(select(selectDishError));
+    this.error$ = this.store.pipe(select(this.selectItemsError));
   }
 
   ngAfterViewInit(): void {
-    this.loadDishes();
+    this.loadItems();
     let filter$ = this.filterSubject.pipe(
       debounceTime(150),
       distinctUntilChanged(),
@@ -87,7 +81,7 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
 
     this.subscription.add(
       merge(filter$, sort$, this.paginator.page)
-        .pipe(tap(() => this.loadDishes()))
+        .pipe(tap(() => this.loadItems()))
         .subscribe()
     );
   }
@@ -97,20 +91,20 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   retry(): void {
-    this.loadDishes();
+    this.loadItems();
   }
 
   onSearchTyping(): void {
     this.paginator.pageIndex = 0;
     if (this.searchText == '') {
       this.search = '';
-      this.loadDishes();
+      this.loadItems();
       return;
     }
     this.searchField = 'text';
     this.searchDirection = ':';
     this.search = this.searchField + this.searchDirection + this.searchText;
-    this.loadDishes();
+    this.loadItems();
   }
 
   formatDate(date: string): string {
@@ -118,7 +112,7 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
     return formattedDate || '';
   }
 
-  private loadDishes(): void {
+  private loadItems(): void {
     this.store.dispatch(new DishLoadAction(
       <RequestParams>{
         pageIndex: this.paginator.pageIndex,
@@ -130,9 +124,9 @@ export class DishesOverviewComponent implements OnInit, AfterViewInit, OnDestroy
     ));
   }
 
-  private initializeData(dishes: Dish[]): void {
+  private initializeData(data: any[]): void {
     this.dataSource = new MatTableDataSource(
-      dishes?.length ? dishes : this.noData
+      data?.length ? data : this.noData
     );
   }
 

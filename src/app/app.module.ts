@@ -42,7 +42,7 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
     HeaderComponent,
     SidenavComponent,
     LayoutComponent,
-    SubLevelMenuComponent,
+    SubLevelMenuComponent
   ],
   imports: [
     BrowserModule,

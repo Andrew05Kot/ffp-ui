@@ -14,6 +14,8 @@ import { DishEffect } from '@app/store/dish/dish.effect';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
 import { InputModule } from '@app/shared';
+import { TableModule } from "@app/components/table/table.module";
+import { PipesModule } from '@app/shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { InputModule } from '@app/shared';
     MatTableModule,
     MatTooltipModule,
     FormsModule,
-    InputModule
+    InputModule,
+    TableModule,
+    PipesModule
   ],
   providers: [
     DatePipe
