@@ -14,8 +14,11 @@ import { DishEffect } from '@app/store/dish/dish.effect';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule } from '@angular/forms';
 import { InputModule } from '@app/shared';
-import { TableModule } from "@app/components/table/table.module";
+import { TableModule } from '@app/components/table/table.module';
 import { PipesModule } from '@app/shared/pipes/pipes.module';
+import { L10nTranslationModule } from 'angular-l10n';
+import { L10nHelperService } from '@app/core/l10n/l10n.helper.service';
+import { translations } from '@app/pages/dishes/translations';
 
 @NgModule({
   declarations: [
@@ -36,11 +39,15 @@ import { PipesModule } from '@app/shared/pipes/pipes.module';
     FormsModule,
     InputModule,
     TableModule,
-    PipesModule
+    PipesModule,
+    L10nTranslationModule
   ],
   providers: [
     DatePipe
   ]
 })
 export class DishesModule {
+  constructor(l10nHelper: L10nHelperService) {
+    l10nHelper.registerL10nProvider('dishes', translations);
+  }
 }

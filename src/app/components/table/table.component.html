@@ -12,7 +12,7 @@
          [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
 
     <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>{{column}}</th>
+      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header l10nTranslate>{{tableName + '.' + column}}</th>
       <td mat-cell class="dc-content" *matCellDef="let data">
         <ng-container *ngTemplateOutlet="
             columnTemplateRefs[column] || defaultColumnRef;

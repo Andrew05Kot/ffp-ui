@@ -24,6 +24,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
+  @Input() tableName: string;
   @Input() displayedColumns: string[];
   @Input() selectAll: MemoizedSelector<any, any>;
   @Input() selectTotal: MemoizedSelector<any, any>;

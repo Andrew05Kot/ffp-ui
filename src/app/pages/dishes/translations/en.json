@@ -1,0 +1,12 @@
+{
+  "DishesOverview": {
+    "id": "Id",
+    "imageUrl": "Picture",
+    "name": "Name",
+    "category": "Category",
+    "description": "Description",
+    "price": "Price",
+    "createdDate": "Created date",
+    "lastModifiedDate": "Last modified date"
+  }
+}

@@ -15,6 +15,7 @@ import { InputModule } from "@app/shared";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { PageModule } from "@app/components";
 import { FormsModule } from "@angular/forms";
+import { L10nTranslateDirective } from 'angular-l10n';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FormsModule } from "@angular/forms";
     InputModule,
     MatTooltipModule,
     PageModule,
-    FormsModule
+    FormsModule,
+    L10nTranslateDirective
   ],
   providers: [
   ]
