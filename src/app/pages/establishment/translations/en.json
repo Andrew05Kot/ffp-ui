@@ -1,0 +1,11 @@
+{
+  "EstablishmentsOverview": {
+    "id": "Id",
+    "country": "Country",
+    "city": "City",
+    "street": "Street",
+    "houseNumber": "House number",
+    "createdDate": "Created date",
+    "lastModifiedDate": "Last modified date"
+  }
+}

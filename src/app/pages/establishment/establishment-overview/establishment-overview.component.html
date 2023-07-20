@@ -1,65 +1,18 @@
-<ffp-page>
-  <table mat-table [dataSource]="dataSource" matSort matSortDisableClear="true"
-         [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element.id}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="country">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Country</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['country']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="city">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>City</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['city']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="street">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Street</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['street']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="houseNumber">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>House number</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['houseNumber']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="createdDate">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Created date</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['createdDate'])}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="lastModifiedDate">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Last modified date</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['lastModifiedDate'])}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="noData">
-      <td mat-cell class="dc-label no-data-cell" *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-        <ng-container *ngIf="!(error$ | async) && !loading">
-          <span class="dc-content">No Establishments</span>
-        </ng-container>
-        <ng-container *ngIf="(error$ | async) && !loading">
-          <span class="dc-label">System Failure</span>
-          <span class="dc-content">Error</span>
-          <span class="retry" (click)="retry()">Retry</span>
-        </ng-container>
-        <ng-container *ngIf="loading">
-          <span class="dc-label">Retrieving data...</span>
-        </ng-container>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></tr>
-    <ng-container *ngIf="establishmentTotal && !loading">
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </ng-container>
-    <ng-container *ngIf="!establishmentTotal || loading">
-      <tr mat-row *matRowDef="let row; columns: ['noData'];" class="no-data-row"></tr>
-    </ng-container>
-  </table>
-
-  <mat-paginator [length]="establishmentTotal" [pageSize]="10"></mat-paginator>
-</ffp-page>
+<ffp-table [tableName]="'EstablishmentsOverview'"
+           [displayedColumns]="displayedColumns"
+           [selectAll]="selectAllEstablishment"
+           [selectTotal]="selectEstablishmentTotal"
+           [selectItemLoading]="selectEstablishmentLoading"
+           [selectItemsError]="selectEstablishmentError"
+           [actionName]="'EstablishmentLoadAction'"
+           [columnTemplateRefs]="{
+             createdDate: createdDate,
+             lastModifiedDate: lastModifiedDate
+           }">
+  <ng-template #createdDate let-data="data">
+    {{data.createdDate | formatDate}}
+  </ng-template>
+  <ng-template #lastModifiedDate let-data="data">
+    {{data.lastModifiedDate | formatDate}}
+  </ng-template>
+</ffp-table>

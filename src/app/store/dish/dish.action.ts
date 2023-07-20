@@ -23,3 +23,10 @@ export class DishLoadFailAction implements Action {
 }
 
 export type DishAction = DishLoadAction | DishLoadSuccessAction | DishLoadFailAction;
+
+declare global {
+  interface Window {
+    DishLoadAction: typeof DishLoadAction;
+  }
+}
+window.DishLoadAction = DishLoadAction;

@@ -17,7 +17,11 @@ import { MatInputModule } from '@angular/material/input';
 import { EstablishmentsMapComponent } from './establishments-map/establishments-map.component';
 import { EstablishmentsListComponent } from './establishments-list/establishments-list.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { PipesModule } from '@app/shared/pipes/pipes.module';
+import { TableModule } from '@app/components/table/table.module';
+import { L10nHelperService } from '@app/core/l10n/l10n.helper.service';
+import { translations } from '@app/pages/establishment/translations';
 
 @NgModule({
   declarations: [
@@ -36,11 +40,17 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    LeafletModule
+    LeafletModule,
+    MatTooltipModule,
+    PipesModule,
+    TableModule
   ],
   providers: [
     DatePipe
   ]
 })
 export class EstablishmentModule {
+  constructor(l10nHelper: L10nHelperService) {
+    l10nHelper.registerL10nProvider('establishments', translations);
+  }
 }

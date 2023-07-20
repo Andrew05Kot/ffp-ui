@@ -5,7 +5,7 @@ import { debounceTime, merge, Observable, Subject, Subscription, tap } from 'rxj
 import { distinctUntilChanged } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { RequestParams } from '@app/models/backend';
-import { MemoizedSelector, select, Store } from '@ngrx/store';
+import { Action, MemoizedSelector, select, Store } from '@ngrx/store';
 import { GlobalState } from '@app/store/dish/global.state';
 import { DatePipe } from '@angular/common';
 import { DishLoadAction } from '@app/store/dish/dish.action';
@@ -108,21 +108,16 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loadItems();
   }
 
-  formatDate(date: string): string {
-    const formattedDate = this.datePipe.transform(date, 'dd.MM.yyyy HH:mm');
-    return formattedDate || '';
-  }
-
   private loadItems(): void {
-    this.store.dispatch(new DishLoadAction(
-      <RequestParams>{
-        pageIndex: this.paginator.pageIndex,
-        pageSize: this.paginator.pageSize,
-        sortDirection: this.sort.direction,
-        sortField: this.sort.active,
-        search: this.search
-      }
-    ));
+    const actionInstance: Action = createInstance(this.actionName, {
+      pageIndex: this.paginator.pageIndex,
+      pageSize: this.paginator.pageSize,
+      sortDirection: this.sort.direction,
+      sortField: this.sort.active,
+      search: this.search,
+    });
+
+    this.store.dispatch(actionInstance);
   }
 
   private initializeData(data: any[]): void {
@@ -131,4 +126,14 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+}
+
+export function createInstance(className: string, ...args: any[]): any {
+  // Check if the class exists in the global context
+  if (typeof (window as any)[className] === 'function') {
+    const ClassReference = (window as any)[className];
+    return new ClassReference(...args);
+  } else {
+    throw new Error(`Class "${className}" not found.`);
+  }
 }
