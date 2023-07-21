@@ -1,60 +1,18 @@
-<ffp-page>
-  <table mat-table [dataSource]="dataSource" matSort matSortDisableClear="true"
-         [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element.id}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="cardNumber">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Card number</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['cardNumber']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="paymentMethod">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Payment method</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['paymentMethod']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="selectedCategories">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Selected categories</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{element['selectedCategories']}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="createdDate">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Created date</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['createdDate'])}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="lastModifiedDate">
-      <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header>Last modified date</th>
-      <td mat-cell class="dc-content" *matCellDef="let element">{{formatDate(element['lastModifiedDate'])}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="noData">
-      <td mat-cell class="dc-label no-data-cell" *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-        <ng-container *ngIf="!(error$ | async) && !loading">
-          <span class="dc-content">No orders</span>
-        </ng-container>
-        <ng-container *ngIf="(error$ | async) && !loading">
-          <span class="dc-label">System Failure</span>
-          <span class="dc-content">Error</span>
-          <span class="retry" (click)="retry()">Retry</span>
-        </ng-container>
-        <ng-container *ngIf="loading">
-          <span class="dc-label">Retrieving data...</span>
-        </ng-container>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns, sticky: true"></tr>
-    <ng-container *ngIf="orderingTotal && !loading">
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </ng-container>
-    <ng-container *ngIf="!orderingTotal || loading">
-      <tr mat-row *matRowDef="let row; columns: ['noData'];" class="no-data-row"></tr>
-    </ng-container>
-  </table>
-
-  <mat-paginator [length]="orderingTotal" [pageSize]="15"></mat-paginator>
-</ffp-page>
+<ffp-table [tableName]="'OrderingOverview'"
+           [displayedColumns]="displayedColumns"
+           [selectAll]="selectAllOrdering"
+           [selectTotal]="selectOrderingTotal"
+           [selectItemLoading]="selectOrderingLoading"
+           [selectItemsError]="selectOrderingError"
+           [actionName]="'OrderingLoadAction'"
+           [columnTemplateRefs]="{
+             createdDate: createdDate,
+             lastModifiedDate: lastModifiedDate
+           }">
+  <ng-template #createdDate let-data="data">
+    {{data.createdDate | formatDate}}
+  </ng-template>
+  <ng-template #lastModifiedDate let-data="data">
+    {{data.lastModifiedDate | formatDate}}
+  </ng-template>
+</ffp-table>
