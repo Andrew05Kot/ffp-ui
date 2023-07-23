@@ -1,6 +1,7 @@
 {
   "EstablishmentsOverview": {
     "id": "Id",
+    "address": "Address",
     "country": "Country",
     "city": "City",
     "street": "Street",

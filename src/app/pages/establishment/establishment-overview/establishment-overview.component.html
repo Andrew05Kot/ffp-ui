@@ -7,8 +7,12 @@
            [actionName]="'EstablishmentLoadAction'"
            [columnTemplateRefs]="{
              createdDate: createdDate,
-             lastModifiedDate: lastModifiedDate
+             lastModifiedDate: lastModifiedDate,
+             address: address
            }">
+  <ng-template #address let-data="data">
+    {{data.street + ' ' + data.houseNumber + ', (' + data.city + ', ' + data.country + ')'}}
+  </ng-template>
   <ng-template #createdDate let-data="data">
     {{data.createdDate | formatDate}}
   </ng-template>

@@ -15,6 +15,7 @@ export class EstablishmentOverviewComponent {
 
   displayedColumns: string[] = [
     'id',
+    'address',
     'country',
     'city',
     'street',

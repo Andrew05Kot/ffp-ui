@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { OrderingOverviewComponent } from './ordering-overview/ordering-overview.component';
 import { OrderingRoutingModule } from '@app/pages/orderings/ordering-routing.module';
 import { PageModule } from '@app/components';
@@ -33,6 +33,9 @@ import { translations } from '@app/pages/orderings/translations';
     MatTableModule,
     TableModule,
     PipesModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class OrderingModule {

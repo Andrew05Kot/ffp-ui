@@ -1,5 +1,5 @@
 {
-  "EstablishmentsOverview": {
+  "OrderingOverview": {
     "id": "Id",
     "cardNumber": "Card number",
     "paymentMethod": "Payment method",
