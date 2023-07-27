@@ -24,6 +24,6 @@
   </div>
 </div>
 <div mat-dialog-actions class="mat-dialog-actions">
-  <button mat-raised-button color="accent" mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" mat-dialog-close>Save</button>
+  <button mat-raised-button color="accent" (click)="close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="create()">Save</button>
 </div>

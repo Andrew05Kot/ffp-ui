@@ -7,7 +7,11 @@
              createdDate: createdDate, lastModifiedDate: lastModifiedDate}">
 
   <ng-template #headerActions>
-    <button mat-raised-button color="primary">Create new</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="openCreateDish()">
+      Create new
+    </button>
   </ng-template>
 
   <ng-template #category let-data="data">

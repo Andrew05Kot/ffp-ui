@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RequestParams } from '@app/models/backend';
+import { Dish, DishRequest, RequestParams } from '@app/models/backend';
 import { environment } from '@src/environments/environment.dev';
 
 @Injectable({
@@ -26,5 +26,9 @@ export class DishService {
       : {};
 
     return this.http.get<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/`, {params: params});
+  }
+
+  create$(dish: DishRequest): Observable<Dish> {
+    return this.http.post<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/`, dish);
   }
 }
