@@ -15,8 +15,10 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { SubLevelMenuComponent } from './components/sidenav/sub-level-menu.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { L10nIntlModule, L10nTranslationModule } from 'angular-l10n';
-import { L10nCookieStorage } from '@app/core/l10n/cookie-storge.service';
-import { getL10nConfig } from '@app/core/l10n/l10n-config.helper';
+import { L10nCookieStorage } from '@app/core/utils/l10n/cookie-storge.service';
+import { getL10nConfig } from '@app/core/utils/l10n/l10n-config.helper';
+import { DestroyService } from '@app/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -57,7 +59,9 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    DestroyService
   ],
   bootstrap: [AppComponent]
 })

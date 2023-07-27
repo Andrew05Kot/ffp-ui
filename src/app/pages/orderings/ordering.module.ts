@@ -13,7 +13,7 @@ import { orderingReducer } from '@app/store/ordering/ordering.reducer';
 import { OrderingEffect } from '@app/store/ordering/ordering.effect';
 import { TableModule } from '@app/components/table/table.module';
 import { PipesModule } from '@app/shared/pipes/pipes.module';
-import { L10nHelperService } from '@app/core/l10n/l10n.helper.service';
+import { L10nHelperService } from '@app/core/utils/l10n/l10n.helper.service';
 import { translations } from '@app/pages/orderings/translations';
 
 @NgModule({

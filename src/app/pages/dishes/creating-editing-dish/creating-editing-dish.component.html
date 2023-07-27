@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Create new dish</h1>
+<div mat-dialog-content class="mat-dialog-content">
+  <div class="form" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>CategoryId</mat-label>
+      <input matInput formControlName="categoryId"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>ImageUrl</mat-label>
+      <input matInput formControlName="imageUrl"/>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions class="mat-dialog-actions">
+  <button mat-raised-button color="accent" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" mat-dialog-close>Save</button>
+</div>

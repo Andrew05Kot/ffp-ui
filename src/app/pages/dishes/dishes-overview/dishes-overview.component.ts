@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { selectAllDishes, selectDishError, selectDishesTotal, selectDishLoading } from '@app/store/dish/dish.selector';
+import { MatDialog } from '@angular/material/dialog';
+import { CreatingEditingDishComponent } from '@app/pages/dishes/creating-editing-dish/creating-editing-dish.component';
 
 @Component({
   selector: 'app-dishes-overview',
@@ -24,7 +26,17 @@ export class DishesOverviewComponent {
   protected readonly selectDishLoading = selectDishLoading;
   protected readonly selectDishError = selectDishError;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
+    this.openCreateDish();
+  }
+
+  openCreateDish(): void {
+    this.dialog.open(CreatingEditingDishComponent, {
+      width: '600px',
+      data: {
+        action: 'create'
+      }
+    })
   }
 
 }

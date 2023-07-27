@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { RequestParams, DishResponse } from '@app/models/backend';
+import { RequestParams, DishesResponse } from '@app/models/backend';
 
 export enum DishActionType {
   Loading = '[Dish] Loading',
@@ -14,7 +14,7 @@ export class DishLoadAction implements Action {
 
 export class DishLoadSuccessAction implements Action {
   public readonly type = DishActionType.LoadSuccess;
-  constructor(public payload: DishResponse) {}
+  constructor(public payload: DishesResponse) {}
 }
 
 export class DishLoadFailAction implements Action {

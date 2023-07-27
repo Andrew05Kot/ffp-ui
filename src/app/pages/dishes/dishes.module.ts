@@ -12,17 +12,23 @@ import { EffectsModule } from '@ngrx/effects';
 import { dishReducer } from '@app/store/dish/dish.reducer';
 import { DishEffect } from '@app/store/dish/dish.effect';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
-import { InputModule } from '@app/shared';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule, FormFieldModule, InputModule } from '@app/shared';
 import { TableModule } from '@app/components/table/table.module';
 import { PipesModule } from '@app/shared/pipes/pipes.module';
 import { L10nTranslationModule } from 'angular-l10n';
-import { L10nHelperService } from '@app/core/l10n/l10n.helper.service';
+import { L10nHelperService } from '@app/core/utils/l10n/l10n.helper.service';
 import { translations } from '@app/pages/dishes/translations';
+import { CreatingEditingDishComponent } from '@app/pages/dishes/creating-editing-dish/creating-editing-dish.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    DishesOverviewComponent
+    DishesOverviewComponent,
+    CreatingEditingDishComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +46,14 @@ import { translations } from '@app/pages/dishes/translations';
     InputModule,
     TableModule,
     PipesModule,
-    L10nTranslationModule
+    L10nTranslationModule,
+    MatDialogModule,
+    ButtonModule,
+    FormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [
     DatePipe

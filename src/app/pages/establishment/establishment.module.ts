@@ -20,7 +20,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PipesModule } from '@app/shared/pipes/pipes.module';
 import { TableModule } from '@app/components/table/table.module';
-import { L10nHelperService } from '@app/core/l10n/l10n.helper.service';
+import { L10nHelperService } from '@app/core/utils/l10n/l10n.helper.service';
 import { translations } from '@app/pages/establishment/translations';
 
 @NgModule({

@@ -1,2 +1,112 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import '../colors';
+
+$ffp-green-palette: (
+  50: #fff9e1,
+  100: #f8f1da,
+  200: #eee7d0,
+  300: #ddd7c0,
+  400: #b9b39d,
+  500: #99937e,
+  600: #706b57,
+  700: #5c5744,
+  800: #3d3927,
+  900: #1d1902,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$ffp-gold-palette: (
+  50: #faf4df,
+  100: #f3e3ad,
+  200: #ead079,
+  300: #e2c044,
+  400: #ddb21b,
+  500: #d8a600,
+  600: #d99a00,
+  700: #d98800,
+  800: #d87800,
+  900: #d75a00,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$ffp-red-palette: (
+  50: #faebe8,
+  100: #fed1bf,
+  200: #fdb496,
+  300: #fd976b,
+  400: #fd814a,
+  500: #fd6e2a,
+  600: #f26826,
+  700: #e46021,
+  800: #d6591e,
+  900: #bc4d19,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+
+$ffp-primary: mat.define-palette($ffp-green-palette, 700, 300, 900);
+$ffp-accent: mat.define-palette($ffp-gold-palette, 300, 100, 500);
+$ffp-warn: mat.define-palette($ffp-red-palette, 700);
+
+$ffp-theme: mat.define-light-theme((
+  color: (
+    primary: $ffp-primary,
+    accent: $ffp-accent,
+    warn: $ffp-warn,
+  )
+));
+
+@include mat.all-component-themes($ffp-theme);
+
 @import 'mat-table';
 @import 'datepicker';
+@import 'dialog';
+@import 'input';
+

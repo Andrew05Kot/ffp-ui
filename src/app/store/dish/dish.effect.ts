@@ -9,7 +9,7 @@ import {
   DishLoadFailAction,
   DishLoadSuccessAction,
 } from '@app/store/dish/dish.action';
-import { DishResponse, RequestParams } from '@app/models/backend';
+import { DishesResponse, RequestParams } from '@app/models/backend';
 import { DishService } from '@app/services/api/dish.service';
 
 @Injectable()
@@ -28,7 +28,7 @@ export class DishEffect {
           map(action => action.payload),
           switchMap((params: RequestParams) =>
             this.service.getAll$(params).pipe(
-              map((response: DishResponse) => {
+              map((response: DishesResponse) => {
                 return new DishLoadSuccessAction(response)
               }),
               catchError((error) => of(new DishLoadFailAction(error)))
