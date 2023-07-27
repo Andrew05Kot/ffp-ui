@@ -14,3 +14,11 @@ export interface EstablishmentResponse {
   pageIndex: number;
   pageSize: number;
 }
+
+export interface EstablishmentRequest {
+  id: number;
+  country: string;
+  city: string;
+  street: string;
+  houseNumber: number;
+}

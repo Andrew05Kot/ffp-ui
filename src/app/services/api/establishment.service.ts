@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@src/environments/environment.dev';
-import { Establishment, RequestParams } from '@app/models/backend';
+import { Establishment, EstablishmentRequest, RequestParams } from '@app/models/backend';
 import { PageResponse } from '@app/models/backend/page-response';
 
 @Injectable({
@@ -26,5 +26,9 @@ export class EstablishmentService {
       : {};
 
     return this.http.get<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, {params: params});
+  }
+
+  create$(request: EstablishmentRequest): Observable<Establishment> {
+    return this.http.post<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, request);
   }
 }

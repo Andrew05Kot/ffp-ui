@@ -22,12 +22,17 @@ import { PipesModule } from '@app/shared/pipes/pipes.module';
 import { TableModule } from '@app/components/table/table.module';
 import { L10nHelperService } from '@app/core/utils/l10n/l10n.helper.service';
 import { translations } from '@app/pages/establishment/translations';
+import { CreatingEditingEstablishmentComponent } from './creating-editing-establishment/creating-editing-establishment.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     EstablishmentOverviewComponent,
     EstablishmentsMapComponent,
-    EstablishmentsListComponent
+    EstablishmentsListComponent,
+    CreatingEditingEstablishmentComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +48,10 @@ import { translations } from '@app/pages/establishment/translations';
     LeafletModule,
     MatTooltipModule,
     PipesModule,
-    TableModule
+    TableModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     DatePipe

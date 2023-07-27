@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { selectEstablishment } from '@app/store/establishment/establishment.selector';
 import { Selectors } from '@app/models/frontend/selector';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  CreatingEditingEstablishmentComponent
+} from '@app/pages/establishment/creating-editing-establishment/creating-editing-establishment.component';
 
 @Component({
   selector: 'app-establishment-overview',
@@ -22,7 +26,16 @@ export class EstablishmentOverviewComponent {
 
   protected readonly selectors: Selectors = selectEstablishment;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
+  }
+
+  openCreateDish(): void {
+    this.dialog.open(CreatingEditingEstablishmentComponent, {
+      width: '600px',
+      data: {
+        action: 'create'
+      }
+    })
   }
 
 }
