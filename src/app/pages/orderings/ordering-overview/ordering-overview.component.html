@@ -1,9 +1,6 @@
 <ffp-table [tableName]="'OrderingOverview'"
            [displayedColumns]="displayedColumns"
-           [selectAll]="selectAllOrdering"
-           [selectTotal]="selectOrderingTotal"
-           [selectItemLoading]="selectOrderingLoading"
-           [selectItemsError]="selectOrderingError"
+           [selectors]="selectors"
            [actionName]="'OrderingLoadAction'"
            [columnTemplateRefs]="{
              createdDate: createdDate,

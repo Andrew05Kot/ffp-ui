@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { OrderingAdapter, OrderingState } from '@app/store/ordering/ordering.state';
+import { Selectors } from '@app/models/frontend/selector';
 
 export const {
   selectIds: _selectOrderingDataIds,
@@ -35,8 +36,14 @@ export const selectOrderingLoading = createSelector(
   (state: OrderingState): boolean => state.loading
 );
 
-
 export const selectOrderingTotal = createSelector(
   selectOrderingState,
   (state: OrderingState): number => state.total
 );
+
+export const selectOrdering: Selectors = {
+  selectAll: selectAllOrdering,
+  selectTotal: selectOrderingTotal,
+  selectItemLoading: selectOrderingLoading,
+  selectItemsError: selectOrderingError
+}

@@ -1,17 +1,15 @@
 <ffp-table [tableName]="'DishesOverview'"
-           [displayedColumns]="displayedColumns"
-           [selectAll]="selectAllDishes"
-           [selectTotal]="selectDishesTotal"
-           [selectItemLoading]="selectDishLoading"
-           [selectItemsError]="selectDishError"
            [actionName]="'DishLoadAction'"
+           [displayedColumns]="displayedColumns"
+           [selectors]="selectors"
            [columnTemplateRefs]="{
-             category: category,
-             imageUrl: imageUrl,
-             description: description,
-             createdDate: createdDate,
-             lastModifiedDate: lastModifiedDate
-           }">
+             category: category, imageUrl: imageUrl, description: description,
+             createdDate: createdDate, lastModifiedDate: lastModifiedDate}">
+
+  <ng-template #headerActions>
+    <button mat-raised-button color="primary">Create new</button>
+  </ng-template>
+
   <ng-template #category let-data="data">
     {{data.category.name}}
   </ng-template>

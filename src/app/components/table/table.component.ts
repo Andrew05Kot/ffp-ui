@@ -1,14 +1,22 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChild,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { debounceTime, merge, Observable, Subject, Subscription, tap } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
-import { RequestParams } from '@app/models/backend';
-import { Action, MemoizedSelector, select, Store } from '@ngrx/store';
+import { Action, select, Store } from '@ngrx/store';
 import { GlobalState } from '@app/store/dish/global.state';
 import { DatePipe } from '@angular/common';
-import { DishLoadAction } from '@app/store/dish/dish.action';
+import { Selectors } from '@app/models/frontend/selector';
 
 export class IColumnTemplateRef {
   [columnName: string]: TemplateRef<any>;
@@ -26,12 +34,11 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() tableName: string;
   @Input() displayedColumns: string[];
-  @Input() selectAll: MemoizedSelector<any, any>;
-  @Input() selectTotal: MemoizedSelector<any, any>;
   @Input() actionName: string;
-  @Input() selectItemLoading: MemoizedSelector<object, boolean, any>;
-  @Input() selectItemsError: MemoizedSelector<object, boolean, any>;
+  @Input() selectors: Selectors;
   @Input() columnTemplateRefs: IColumnTemplateRef = {};
+
+  @ContentChild('headerActions') headerActions: TemplateRef<any>;
 
   dataSource: MatTableDataSource<any>;
   total: number;
@@ -52,17 +59,17 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.pipe(select(this.selectAll)).subscribe(dishes => this.initializeData(dishes));
-    this.store.pipe(select(this.selectTotal)).subscribe(total => this.total = total);
+    this.store.pipe(select(this.selectors.selectAll)).subscribe(dishes => this.initializeData(dishes));
+    this.store.pipe(select(this.selectors.selectTotal)).subscribe(total => this.total = total);
     this.subscription.add(this.store.pipe(
-      select(this.selectItemLoading))
+      select(this.selectors.selectItemLoading))
       .subscribe(loading => {
         if (loading) {
           this.dataSource = new MatTableDataSource(this.noData);
         }
         this.loading = loading;
       }));
-    this.error$ = this.store.pipe(select(this.selectItemsError));
+    this.error$ = this.store.pipe(select(this.selectors.selectItemsError));
   }
 
   ngAfterViewInit(): void {

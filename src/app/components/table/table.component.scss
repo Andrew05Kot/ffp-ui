@@ -1,4 +1,7 @@
 .table__tool-bar {
+  display: flex;
+  justify-content: space-between;
+
   .tool-bar__searching {
     width: 400px;
   }

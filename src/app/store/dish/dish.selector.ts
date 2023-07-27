@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { dishAdapter, DishState } from '@app/store/dish/dish.state';
+import { Selectors } from '@app/models/frontend/selector';
 
 export const {
   selectIds: _selectDishDataIds,
@@ -40,3 +41,10 @@ export const selectDishesTotal = createSelector(
   selectDishState,
   (state: DishState): number => state.total
 );
+
+export const selectEstablishment: Selectors = {
+  selectAll: selectAllDishes,
+  selectTotal: selectDishesTotal,
+  selectItemLoading: selectDishLoading,
+  selectItemsError: selectDishError
+}

@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  selectAllOrdering,
-  selectOrderingError,
-  selectOrderingLoading,
-  selectOrderingTotal
-} from '@app/store/ordering/ordering.selector';
+import { selectOrdering } from '@app/store/ordering/ordering.selector';
+import { Selectors } from '@app/models/frontend/selector';
 
 @Component({
   selector: 'app-ordering-overview',
@@ -22,8 +18,5 @@ export class OrderingOverviewComponent {
     'lastModifiedDate'
   ];
 
-  protected readonly selectAllOrdering = selectAllOrdering;
-  protected readonly selectOrderingTotal = selectOrderingTotal;
-  protected readonly selectOrderingLoading = selectOrderingLoading;
-  protected readonly selectOrderingError = selectOrderingError;
+  protected readonly selectors: Selectors = selectOrdering;
 }

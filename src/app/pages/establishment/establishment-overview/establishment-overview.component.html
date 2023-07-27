@@ -1,9 +1,6 @@
 <ffp-table [tableName]="'EstablishmentsOverview'"
            [displayedColumns]="displayedColumns"
-           [selectAll]="selectAllEstablishment"
-           [selectTotal]="selectEstablishmentTotal"
-           [selectItemLoading]="selectEstablishmentLoading"
-           [selectItemsError]="selectEstablishmentError"
+           [selectors]="selectors"
            [actionName]="'EstablishmentLoadAction'"
            [columnTemplateRefs]="{
              createdDate: createdDate,

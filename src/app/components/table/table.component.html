@@ -7,6 +7,10 @@
                  placeholder="Search">
       </ffp-input>
     </div>
+
+    <div class="tool-bar__actions">
+      <ng-content *ngTemplateOutlet="headerActions"></ng-content>
+    </div>
   </div>
   <table mat-table [dataSource]="dataSource" matSort matSortDisableClear="true"
          [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">

@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  selectAllEstablishment,
-  selectEstablishmentError,
-  selectEstablishmentLoading,
-  selectEstablishmentTotal
-} from '@app/store/establishment/establishment.selector';
+import { selectEstablishment } from '@app/store/establishment/establishment.selector';
+import { Selectors } from '@app/models/frontend/selector';
 
 @Component({
   selector: 'app-establishment-overview',
@@ -24,10 +20,7 @@ export class EstablishmentOverviewComponent {
     'lastModifiedDate'
   ];
 
-  protected readonly selectAllEstablishment = selectAllEstablishment;
-  protected readonly selectEstablishmentTotal = selectEstablishmentTotal;
-  protected readonly selectEstablishmentLoading = selectEstablishmentLoading;
-  protected readonly selectEstablishmentError = selectEstablishmentError;
+  protected readonly selectors: Selectors = selectEstablishment;
 
   constructor() {
   }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { selectAllDishes, selectDishError, selectDishesTotal, selectDishLoading } from '@app/store/dish/dish.selector';
+import { selectEstablishment } from '@app/store/dish/dish.selector';
 import { MatDialog } from '@angular/material/dialog';
 import { CreatingEditingDishComponent } from '@app/pages/dishes/creating-editing-dish/creating-editing-dish.component';
+import { Selectors } from '@app/models/frontend/selector';
 
 @Component({
   selector: 'app-dishes-overview',
@@ -21,10 +22,7 @@ export class DishesOverviewComponent {
     'lastModifiedDate'
   ];
 
-  protected readonly selectAllDishes = selectAllDishes;
-  protected readonly selectDishesTotal = selectDishesTotal;
-  protected readonly selectDishLoading = selectDishLoading;
-  protected readonly selectDishError = selectDishError;
+  protected readonly selectors: Selectors = selectEstablishment;
 
   constructor(private dialog: MatDialog) {
     this.openCreateDish();
