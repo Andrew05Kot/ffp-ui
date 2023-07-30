@@ -27,10 +27,7 @@ export class CreatingEditingEstablishmentComponent {
   }
 
   create(): void {
-    this.establishmentService.create$(this.form.getRawValue()).subscribe(result => {
-        console.log('result >> ', result);
-        this.dialogRef.close();
-      }
-    );
+    this.establishmentService.create$(this.form.getRawValue()).subscribe(result =>
+      this.dialogRef.close(true))
   }
 }

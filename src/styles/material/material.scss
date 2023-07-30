@@ -90,7 +90,6 @@ $ffp-red-palette: (
   )
 );
 
-
 $ffp-primary: mat.define-palette($ffp-green-palette, 700, 300, 900);
 $ffp-accent: mat.define-palette($ffp-gold-palette, 300, 100, 500);
 $ffp-warn: mat.define-palette($ffp-red-palette, 700);
