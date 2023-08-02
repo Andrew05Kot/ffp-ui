@@ -30,7 +30,7 @@ export class DishesOverviewComponent {
 
   openCreateDish(): void {
     this.dialog.open(CreatingEditingDishComponent, {
-      width: '600px',
+      width: '900px',
       data: {
         action: 'create'
       }

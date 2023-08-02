@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 @include mat.core();
 
+@import '~material-icons/iconfont/material-icons.css';
 @import '../colors';
 
 $ffp-green-palette: (

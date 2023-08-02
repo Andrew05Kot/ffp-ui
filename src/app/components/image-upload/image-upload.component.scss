@@ -1,0 +1,106 @@
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin font-style($f-size, $f-weight) {
+  font-size: $f-size;
+  font-weight: $f-weight;
+  color: #3d3927;
+  @content;
+}
+
+$image-dimensions: 275px;
+$font-size: 14px;
+$font-weight-bold: 700;
+
+.upload-image-wrapper {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  align-items: center;
+
+  .uploading-section {
+    @include size($image-dimensions, $image-dimensions);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+
+    .select-image-container {
+      @include size($image-dimensions, $image-dimensions);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      border: 1px dashed #6f6e57;
+      border-radius: 50%;
+      position: absolute;
+      letter-spacing: 0;
+
+      .upload-caption {
+        line-height: 10px;
+
+        span {
+          width: 100%;
+          color: #73797E;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .add-image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include size(100%, 100%);
+      position: relative;
+
+      .uploaded-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include size(100%, 100%);
+
+        img {
+          text-align: center;
+          object-fit: cover;
+          @include size(100%, 100%);
+          border-radius: 50%;
+        }
+      }
+
+      .uploaded-image:hover {
+        cursor: pointer;
+      }
+
+      .remove-image-button {
+        position: absolute;
+        margin-left: 135px;
+        margin-bottom: 250px;
+
+        button {
+          @include size(30px, 30px);
+          position: absolute;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .action-buttons-section {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include font-style($font-size, $font-weight-bold);
+
+    button {
+      margin-top: 8px;
+    }
+  }
+}

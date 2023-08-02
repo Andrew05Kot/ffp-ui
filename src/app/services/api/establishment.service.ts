@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@src/environments/environment.dev';
 import { Establishment, EstablishmentRequest, RequestParams } from '@app/models/backend';
@@ -29,6 +29,12 @@ export class EstablishmentService {
   }
 
   create$(request: EstablishmentRequest): Observable<Establishment> {
-    return this.http.post<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const requestUrl = `${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`;
+    return this.http.post<any>(requestUrl, request);
   }
 }

@@ -1,10 +1,24 @@
 .mat-dialog-content {
-  .form {
+
+  .dialog-content-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .image-uploading-form {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+
   }
-}
-
-.mat-dialog-actions {
 
 }
+

@@ -31,4 +31,9 @@ export class CreatingEditingDishComponent {
       }
     );
   }
+
+  catchMainImage(uploadedMainImageFile: File): void {
+    console.log('uploadedMainImageFile >> ', uploadedMainImageFile)
+  }
+
 }

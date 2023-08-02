@@ -1,0 +1,48 @@
+<section>
+  <div class="upload-image-wrapper">
+    <div class="uploading-section">
+      <ng-container *ngIf="!loadedImage">
+        <div class="select-image-container">
+          <div class="upload-caption">
+            <span>
+              Drag and drop image to upload
+              <br> ({{supportedFormatsForView}})
+            </span>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="add-image-container" *ngIf="!inProcess; else progressSpin">
+        <div class="uploaded-image" (click)="imageInput.click()">
+          <ngx-file-drop dropZoneClassName="drop-zone"
+                         contentClassName="drop-zone-content"
+                         (onFileDrop)="catchDroppedFile($event)"
+          >
+            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+              <ng-container *ngIf="loadedImage">
+                <img [src]="getSanitizeUrl(loadedImage)" alt="image">
+              </ng-container>
+            </ng-template>
+          </ngx-file-drop>
+        </div>
+
+        <div class="remove-image-button" *ngIf="loadedImage">
+          <button mat-fab (click)="clearLoadedFile()">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons-section">
+      <span>or</span>
+      <button mat-flat-button color="primary" (click)="imageInput.click()">Select image</button>
+    </div>
+
+    <input hidden type="file" #imageInput (change)="catchUploadedFile($event)">
+  </div>
+</section>
+
+<ng-template #progressSpin>
+  <mat-progress-spinner color=warm mode="indeterminate"></mat-progress-spinner>
+</ng-template>
