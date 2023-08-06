@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { divIcon, latLng, Layer, MapOptions, marker, tileLayer } from 'leaflet';
+import { divIcon, latLng, LatLngBounds, Layer, Map, MapOptions, marker, tileLayer } from 'leaflet';
 import { HttpClient } from '@angular/common/http';
-import { EstablishmentService } from '@app/services/api/establishment.service';
+import { EstablishmentRequestParams, EstablishmentService } from '@app/services/api/establishment.service';
 import { Establishment, RequestParams } from '@app/models/backend';
 
 @Component({
@@ -19,31 +19,49 @@ export class EstablishmentsMapComponent implements OnInit {
       tileLayer(this.mapTemplateUrl,
         {maxZoom: 18, attribution: '...'}),
     ],
-    zoom: 5,
+    zoom: 10,
     center: latLng(this.kyivCoordinates.latitude, this.kyivCoordinates.longitude),
     zoomControl: true,
   } as MapOptions;
 
   markers: Layer[] = [];
+  map: Map;
 
   constructor(private http: HttpClient,
               private establishmentService: EstablishmentService) {
   }
 
-  ngOnInit(): void {
+  onMapReady(map: Map): void {
+    this.map = map;
     this.initItems();
   }
 
+  ngOnInit(): void {
+
+  }
+
   private initItems(): void {
-    const requestParams = {
+    const mapBounds: LatLngBounds = this.map.getBounds();
+    const northEast: any = mapBounds.getNorthEast();
+    const southWest: any = mapBounds.getSouthWest();
+
+    const requestParams: EstablishmentRequestParams = {
       pageIndex: 0,
-      pageSize: 100
+      pageSize: 100,
+      minLatitude: southWest.lat,
+      maxLatitude: northEast.lat,
+      minLongitude: southWest.lng,
+      maxLongitude: northEast.lng
     } as RequestParams;
     this.establishmentService.getAll$(requestParams).subscribe(
       response => {
         response.items.forEach(establishment => this.drawMarker(establishment));
       }
     );
+  }
+
+  onMapZoomEnd(): void {
+    this.initItems();
   }
 
   private drawMarker(establishment: Establishment): void {
@@ -75,14 +93,6 @@ export class EstablishmentsMapComponent implements OnInit {
     //   width: '250px',
     //   data: data
     // });
-  }
-
-  private onZoomIn(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  private onZoomOut(): void {
-    throw new Error('Method not implemented.');
   }
 
   private addRisePopupOnHoverEvent(marker): void {
