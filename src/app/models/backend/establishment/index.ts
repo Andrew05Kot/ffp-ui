@@ -3,7 +3,9 @@ export interface Establishment {
   country: string;
   city: string;
   street: string;
-  houseNumber: number;
+  houseNumber: string;
+  longitude: number;
+  latitude: number;
   createdDate?: string;
   lastModifiedDate?: string;
 }
