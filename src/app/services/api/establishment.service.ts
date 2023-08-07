@@ -5,12 +5,6 @@ import { environment } from '@src/environments/environment.dev';
 import { Establishment, EstablishmentRequest, RequestParams } from '@app/models/backend';
 import { PageResponse } from '@app/models/backend/page-response';
 
-export interface EstablishmentRequestParams extends RequestParams{
-  minLatitude?: number;
-  maxLatitude?: number;
-  minLongitude?: number;
-  maxLongitude?: number;
-}
 
 
 @Injectable({
@@ -23,13 +17,14 @@ export class EstablishmentService {
   constructor(public http: HttpClient) {
   }
 
-  getAll$(requestParams: EstablishmentRequestParams): Observable<PageResponse<Establishment>> {
+  getAll$(requestParams: RequestParams): Observable<PageResponse<Establishment>> {
     const params = requestParams ?
       {
         pageIndex: requestParams.pageIndex.toString(),
         pageSize: requestParams.pageSize.toString(),
         sortDirection: requestParams.sortDirection ? requestParams.sortDirection.toString().toUpperCase() : null,
         sortField: requestParams.sortField ? requestParams.sortField.toString() : null,
+        search: requestParams.search ? encodeURI(requestParams.search) : null
       }
       : {};
 

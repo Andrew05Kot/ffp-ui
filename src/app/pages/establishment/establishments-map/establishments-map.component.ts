@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { divIcon, latLng, LatLngBounds, Layer, Map, MapOptions, marker, tileLayer } from 'leaflet';
 import { HttpClient } from '@angular/common/http';
-import { EstablishmentRequestParams, EstablishmentService } from '@app/services/api/establishment.service';
+import { EstablishmentService } from '@app/services/api/establishment.service';
 import { Establishment, RequestParams } from '@app/models/backend';
 
 @Component({
@@ -9,7 +9,7 @@ import { Establishment, RequestParams } from '@app/models/backend';
   templateUrl: './establishments-map.component.html',
   styleUrls: ['./establishments-map.component.scss']
 })
-export class EstablishmentsMapComponent implements OnInit {
+export class EstablishmentsMapComponent {
 
   mapTemplateUrl: string = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   kyivCoordinates = {latitude: 50.450001, longitude: 30.523333};
@@ -17,9 +17,9 @@ export class EstablishmentsMapComponent implements OnInit {
   options: MapOptions = {
     layers: [
       tileLayer(this.mapTemplateUrl,
-        {maxZoom: 18, attribution: '...'}),
+        {maxZoom: 18, minZoom: 2, attribution: '...'}),
     ],
-    zoom: 10,
+    zoom: 11,
     center: latLng(this.kyivCoordinates.latitude, this.kyivCoordinates.longitude),
     zoomControl: true,
   } as MapOptions;
@@ -27,52 +27,59 @@ export class EstablishmentsMapComponent implements OnInit {
   markers: Layer[] = [];
   map: Map;
 
+  icon = divIcon({
+    iconSize: [30, 30],
+    html: '<div class=\'marker\'></div>',
+    className: 'point-marker',
+  });
+
+  prevZoom: number;
+
   constructor(private http: HttpClient,
+              private cdr: ChangeDetectorRef,
               private establishmentService: EstablishmentService) {
   }
 
   onMapReady(map: Map): void {
     this.map = map;
+    this.prevZoom = map.getZoom();
     this.initItems();
+
+    map.on('zoomend', () => this.handleMapChange());
+    map.on('moveend', () => this.initItems());
   }
 
-  ngOnInit(): void {
-
+  private handleMapChange(): void {
+    const currentZoom = this.map.getZoom();
+    if (currentZoom > this.prevZoom) {
+      this.prevZoom = currentZoom;
+      this.initItems();
+    }
   }
 
   private initItems(): void {
-    const mapBounds: LatLngBounds = this.map.getBounds();
-    const northEast: any = mapBounds.getNorthEast();
-    const southWest: any = mapBounds.getSouthWest();
+    this.markers = [];
+    const wrappedBounds = this.map.getBounds();
+    const southWest = wrappedBounds.getSouthWest();
+    const northEast = wrappedBounds.getNorthEast();
 
-    const requestParams: EstablishmentRequestParams = {
+    const searchBounds = `latitude<=${northEast.lat},longitude<=${northEast.lng},latitude>=${southWest.lat},longitude>=${southWest.lng}`;
+
+    const requestParams: RequestParams = {
       pageIndex: 0,
       pageSize: 100,
-      minLatitude: southWest.lat,
-      maxLatitude: northEast.lat,
-      minLongitude: southWest.lng,
-      maxLongitude: northEast.lng
+      search: searchBounds,
     } as RequestParams;
-    this.establishmentService.getAll$(requestParams).subscribe(
-      response => {
+    this.establishmentService.getAll$(requestParams).subscribe(response => {
         response.items.forEach(establishment => this.drawMarker(establishment));
+        this.cdr.detectChanges();
       }
     );
   }
 
-  onMapZoomEnd(): void {
-    this.initItems();
-  }
-
   private drawMarker(establishment: Establishment): void {
-    const icon = divIcon({
-      iconSize: [30, 30],
-      html: '<div class=\'marker\'></div>',
-      className: 'point-marker',
-    });
-
     const newMarker = marker([establishment.latitude, establishment.longitude], {
-      icon: icon,
+      icon: this.icon,
       draggable: false,
       autoPanSpeed: 20,
       riseOnHover: true,
@@ -87,20 +94,15 @@ export class EstablishmentsMapComponent implements OnInit {
 
   private onMarkerClick($event: PointerEvent): void {
     console.log('$event >> ', $event.target['options']['title']);
-
-    // const data = this.testData.find(item => item.id == $event.target['options']['title']);
-    // this.dialog.open(InfoPopUpComponent, {
-    //   width: '250px',
-    //   data: data
-    // });
   }
 
   private addRisePopupOnHoverEvent(marker): void {
     marker.on('mouseover', function (e) {
+      this.openPopup();
     });
 
     marker.on('mouseout', function (e) {
-      // this.closePopup();
+      this.closePopup();
     });
   }
 

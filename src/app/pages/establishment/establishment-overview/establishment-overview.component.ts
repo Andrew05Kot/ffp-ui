@@ -21,7 +21,9 @@ export class EstablishmentOverviewComponent {
     'street',
     'houseNumber',
     'createdDate',
-    'lastModifiedDate'
+    'lastModifiedDate',
+    // 'longitude',
+    // 'latitude'
   ];
 
   protected readonly selectors: Selectors = selectEstablishment;
