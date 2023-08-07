@@ -1,22 +1,43 @@
 <h1 mat-dialog-title>Create new Establishment</h1>
 <div mat-dialog-content class="mat-dialog-content">
-  <div class="form" [formGroup]="form">
-    <mat-form-field appearance="outline">
-      <mat-label>Country</mat-label>
-      <input formControlName="country" matInput>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>City</mat-label>
-      <input matInput formControlName="city"/>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Street</mat-label>
-      <input matInput formControlName="street"/>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>HouseNumber</mat-label>
-      <input matInput formControlName="houseNumber"/>
-    </mat-form-field>
+  <div class="dialog-content-wrapper">
+    <div class="map-form">
+      <div class="map"
+           leaflet
+           [leafletOptions]="options"
+           (leafletMapReady)="onMapReady($event)"
+           [leafletLayers]="markers"
+      >
+      </div>
+    </div>
+    <div class="form-fields" [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input formControlName="country" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>HouseNumber</mat-label>
+        <input matInput formControlName="houseNumber"/>
+      </mat-form-field>
+      <div class="coordinates">
+        <mat-form-field>
+          <mat-label>Latitude</mat-label>
+          <input matInput formControlName="latitude"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Longitude</mat-label>
+          <input matInput formControlName="longitude"/>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
 </div>
 <div mat-dialog-actions class="mat-dialog-actions">
@@ -25,5 +46,6 @@
           color="primary"
           (click)="create()"
           [disabled]="form.invalid"
-          >Save</button>
+  >Save
+  </button>
 </div>

@@ -26,6 +26,7 @@ import { CreatingEditingEstablishmentComponent } from './creating-editing-establ
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImageUploadModule } from '@app/components/image-upload/image-upload.module';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TableModule,
     MatButtonModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ImageUploadModule
   ],
   providers: [
     DatePipe

@@ -14,7 +14,9 @@ export class EstablishmentForm extends FormGroup<FormGroupDef<EstablishmentReque
       country: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       street: new FormControl('', Validators.required),
-      houseNumber: new FormControl(null, Validators.required)
+      houseNumber: new FormControl(null, Validators.required),
+      latitude: new FormControl(null, Validators.required),
+      longitude: new FormControl(null, Validators.required)
     });
   }
 }

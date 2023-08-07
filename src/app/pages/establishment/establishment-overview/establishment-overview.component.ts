@@ -33,7 +33,7 @@ export class EstablishmentOverviewComponent {
 
   openCreateDish(): void {
     this.dialog.open(CreatingEditingEstablishmentComponent, {
-      width: '600px',
+      width: '900px',
       data: {
         action: 'create'
       }

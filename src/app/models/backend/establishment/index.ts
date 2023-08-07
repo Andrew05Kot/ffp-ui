@@ -22,5 +22,7 @@ export interface EstablishmentRequest {
   country: string;
   city: string;
   street: string;
-  houseNumber: number;
+  houseNumber: string;
+  latitude: number;
+  longitude: number;
 }
