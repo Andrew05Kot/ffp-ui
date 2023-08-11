@@ -5,8 +5,6 @@ import { environment } from '@src/environments/environment.dev';
 import { Establishment, EstablishmentRequest, RequestParams } from '@app/models/backend';
 import { PageResponse } from '@app/models/backend/page-response';
 
-
-
 @Injectable({
   providedIn: 'root'
 })

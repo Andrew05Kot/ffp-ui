@@ -25,7 +25,7 @@ export class DishesOverviewComponent {
   protected readonly selectors: Selectors = selectEstablishment;
 
   constructor(private dialog: MatDialog) {
-    this.openCreateDish();
+    // this.openCreateDish();
   }
 
   openCreateDish(): void {
@@ -36,5 +36,4 @@ export class DishesOverviewComponent {
       }
     })
   }
-
 }

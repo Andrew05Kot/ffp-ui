@@ -54,8 +54,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   private search: string = '';
   private subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<GlobalState>,
-              private datePipe: DatePipe) {
+  constructor(private store: Store<GlobalState>) {
   }
 
   ngOnInit(): void {

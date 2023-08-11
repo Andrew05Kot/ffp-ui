@@ -24,11 +24,14 @@ export class DishService {
         search: requestParams.search,
       }
       : {};
-
     return this.http.get<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/`, {params: params});
   }
 
   create$(dish: DishRequest): Observable<Dish> {
     return this.http.post<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/`, dish);
+  }
+
+  update$(id: number, dish: DishRequest): Observable<Dish> {
+    return this.http.put<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/${id}`, dish);
   }
 }
