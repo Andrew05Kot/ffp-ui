@@ -1,7 +1,6 @@
 <ffp-table [tableName]="'DishesOverview'"
-           [actionName]="'DishLoadAction'"
            [displayedColumns]="displayedColumns"
-           [selectors]="selectors"
+           [service]="service"
            [columnTemplateRefs]="{
              category: category, imageUrl: imageUrl, description: description,
              createdDate: createdDate, lastModifiedDate: lastModifiedDate}">

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { selectEstablishment } from '@app/store/establishment/establishment.selector';
-import { Selectors } from '@app/models/frontend/selector';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {
   CreatingEditingEstablishmentComponent
 } from '@app/pages/establishment/creating-editing-establishment/creating-editing-establishment.component';
+import { ApiService } from '@app/services/api/api.service';
+import { EstablishmentService } from '@app/services/api/establishment.service';
 
 @Component({
   selector: 'app-establishment-overview',
@@ -26,7 +26,7 @@ export class EstablishmentOverviewComponent {
     // 'latitude'
   ];
 
-  protected readonly selectors: Selectors = selectEstablishment;
+  protected readonly service: ApiService = inject(EstablishmentService);
 
   constructor(private dialog: MatDialog) {
   }

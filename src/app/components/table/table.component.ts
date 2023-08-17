@@ -13,10 +13,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { debounceTime, merge, Observable, Subject, Subscription, tap } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
-import { Action, select, Store } from '@ngrx/store';
-import { GlobalState } from '@app/store/dish/global.state';
-import { DatePipe } from '@angular/common';
-import { Selectors } from '@app/models/frontend/selector';
+import { RequestParams } from '@app/models/backend';
+import { ApiService } from '@app/services/api/api.service';
 
 export class IColumnTemplateRef {
   [columnName: string]: TemplateRef<any>;
@@ -34,9 +32,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() tableName: string;
   @Input() displayedColumns: string[];
-  @Input() actionName: string;
-  @Input() selectors: Selectors;
   @Input() columnTemplateRefs: IColumnTemplateRef = {};
+  @Input() service: ApiService;
 
   @ContentChild('headerActions') headerActions: TemplateRef<any>;
 
@@ -54,21 +51,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   private search: string = '';
   private subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<GlobalState>) {
-  }
-
   ngOnInit(): void {
-    this.store.pipe(select(this.selectors.selectAll)).subscribe(dishes => this.initializeData(dishes));
-    this.store.pipe(select(this.selectors.selectTotal)).subscribe(total => this.total = total);
-    this.subscription.add(this.store.pipe(
-      select(this.selectors.selectItemLoading))
-      .subscribe(loading => {
-        if (loading) {
-          this.dataSource = new MatTableDataSource(this.noData);
-        }
-        this.loading = loading;
-      }));
-    this.error$ = this.store.pipe(select(this.selectors.selectItemsError));
   }
 
   ngAfterViewInit(): void {
@@ -115,15 +98,20 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private loadItems(): void {
-    const actionInstance: Action = createInstance(this.actionName, {
+    this.service.getAll$(this.getRequestParams()).subscribe(data => {
+      this.dataSource = new MatTableDataSource(data.items);
+      this.total = data.count;
+    });
+  }
+
+  private getRequestParams(): RequestParams {
+    return {
       pageIndex: this.paginator.pageIndex,
       pageSize: this.paginator.pageSize,
       sortDirection: this.sort.direction,
       sortField: this.sort.active,
       search: this.search,
-    });
-
-    this.store.dispatch(actionInstance);
+    } as RequestParams;
   }
 
   private initializeData(data: any[]): void {

@@ -1,7 +1,6 @@
 <ffp-table [tableName]="'OrderingOverview'"
            [displayedColumns]="displayedColumns"
-           [selectors]="selectors"
-           [actionName]="'OrderingLoadAction'"
+           [service]="service"
            [columnTemplateRefs]="{
              createdDate: createdDate,
              lastModifiedDate: lastModifiedDate

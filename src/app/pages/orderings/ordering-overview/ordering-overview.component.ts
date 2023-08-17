@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { selectOrdering } from '@app/store/ordering/ordering.selector';
-import { Selectors } from '@app/models/frontend/selector';
+import { Component, inject } from '@angular/core';
+import { ApiService } from '@app/services/api/api.service';
+import { OrderingService } from '@app/services/api/ordering.service';
 
 @Component({
   selector: 'app-ordering-overview',
@@ -18,5 +18,5 @@ export class OrderingOverviewComponent {
     'lastModifiedDate'
   ];
 
-  protected readonly selectors: Selectors = selectOrdering;
+  protected readonly service: ApiService = inject(OrderingService);
 }

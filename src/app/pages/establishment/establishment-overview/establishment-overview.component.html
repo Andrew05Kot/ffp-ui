@@ -1,7 +1,6 @@
 <ffp-table [tableName]="'EstablishmentsOverview'"
            [displayedColumns]="displayedColumns"
-           [selectors]="selectors"
-           [actionName]="'EstablishmentLoadAction'"
+           [service]="service"
            [columnTemplateRefs]="{
              createdDate: createdDate,
              lastModifiedDate: lastModifiedDate,

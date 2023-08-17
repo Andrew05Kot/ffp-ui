@@ -4,11 +4,12 @@ import { Observable } from 'rxjs';
 import { environment } from '@src/environments/environment.dev';
 import { Establishment, EstablishmentRequest, RequestParams } from '@app/models/backend';
 import { PageResponse } from '@app/models/backend/page-response';
+import { ApiService } from '@app/services/api/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EstablishmentService {
+export class EstablishmentService implements ApiService {
 
   private static EstablishmentApiName: string = 'establishment';
 
@@ -37,5 +38,9 @@ export class EstablishmentService {
     };
     const requestUrl = `${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`;
     return this.http.post<any>(requestUrl, request);
+  }
+
+  update$(id: number, request: any): Observable<Establishment> {
+    throw new Error('Method not implemented.');
   }
 }

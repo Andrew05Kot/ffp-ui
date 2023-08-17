@@ -7,10 +7,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PageModule } from '@app/components';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { dishReducer } from '@app/store/dish/dish.reducer';
-import { DishEffect } from '@app/store/dish/dish.effect';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule, FormFieldModule, InputModule } from '@app/shared';
@@ -35,9 +31,6 @@ import { ImageUploadModule } from '@app/components/image-upload/image-upload.mod
     CommonModule,
     PageModule,
     DishesRoutingModule,
-
-    StoreModule.forFeature('Dish', dishReducer),
-    EffectsModule.forFeature(DishEffect),
 
     MatPaginatorModule,
     MatSortModule,

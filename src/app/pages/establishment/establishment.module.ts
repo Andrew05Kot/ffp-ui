@@ -6,10 +6,6 @@ import {
   EstablishmentOverviewComponent
 } from '@app/pages/establishment/establishment-overview/establishment-overview.component';
 import { PageModule } from '@app/components';
-import { StoreModule } from '@ngrx/store';
-import { establishmentReducer } from '@app/store/establishment/establishment.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { EstablishmentEffect } from '@app/store/establishment/establishment.effect';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -22,7 +18,9 @@ import { PipesModule } from '@app/shared/pipes/pipes.module';
 import { TableModule } from '@app/components/table/table.module';
 import { L10nHelperService } from '@app/core/utils/l10n/l10n.helper.service';
 import { translations } from '@app/pages/establishment/translations';
-import { CreatingEditingEstablishmentComponent } from './creating-editing-establishment/creating-editing-establishment.component';
+import {
+  CreatingEditingEstablishmentComponent
+} from './creating-editing-establishment/creating-editing-establishment.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,8 +37,6 @@ import { ImageUploadModule } from '@app/components/image-upload/image-upload.mod
     CommonModule,
     PageModule,
     EstablishmentRoutingModule,
-    StoreModule.forFeature('Establishment', establishmentReducer),
-    EffectsModule.forFeature(EstablishmentEffect),
 
     MatInputModule,
     MatPaginatorModule,

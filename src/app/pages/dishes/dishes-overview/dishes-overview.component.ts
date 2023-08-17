@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { selectEstablishment } from '@app/store/dish/dish.selector';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreatingEditingDishComponent } from '@app/pages/dishes/creating-editing-dish/creating-editing-dish.component';
-import { Selectors } from '@app/models/frontend/selector';
+import { DishService } from '@app/services/api/dish.service';
+import { ApiService } from '@app/services/api/api.service';
 
 @Component({
   selector: 'app-dishes-overview',
@@ -22,10 +22,9 @@ export class DishesOverviewComponent {
     'lastModifiedDate'
   ];
 
-  protected readonly selectors: Selectors = selectEstablishment;
+  service: ApiService = inject(DishService);
 
   constructor(private dialog: MatDialog) {
-    // this.openCreateDish();
   }
 
   openCreateDish(): void {
