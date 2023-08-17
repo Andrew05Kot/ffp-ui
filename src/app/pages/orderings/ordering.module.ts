@@ -3,8 +3,6 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { OrderingOverviewComponent } from './ordering-overview/ordering-overview.component';
 import { OrderingRoutingModule } from '@app/pages/orderings/ordering-routing.module';
 import { PageModule } from '@app/components';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
