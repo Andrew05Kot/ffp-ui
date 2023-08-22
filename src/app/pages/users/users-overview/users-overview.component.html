@@ -2,12 +2,18 @@
            [displayedColumns]="displayedColumns"
            [service]="service"
            [columnTemplateRefs]="{
+             imageUrl: imageUrl,
              createdDate: createdDate,
              lastModifiedDate: lastModifiedDate,
              address: address,
              fullName: fullName,
              birthday: birthday
            }">
+  <ng-template #imageUrl let-data="data">
+    <div class="user__image-cell">
+      <img class="user__image-img" [src]="data.imageUrl" alt="">
+    </div>
+  </ng-template>
   <ng-template #fullName let-data="data">
     {{data.firstName + ' ' + data.lastName}}
   </ng-template>

@@ -1,5 +1,6 @@
 {
   "UsersOverview": {
+    "imageUrl": "Picture",
     "fullName": "Name",
     "birthday": "Birthday",
     "address": "Address",

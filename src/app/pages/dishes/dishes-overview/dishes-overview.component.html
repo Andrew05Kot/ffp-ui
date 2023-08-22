@@ -21,8 +21,7 @@
       <img class="dish__image-img" [src]="data.imageUrl" alt="">
     </div>
   </ng-template>
-  <ng-template #description let-data="data"
-               class="">
+  <ng-template #description let-data="data">
     <div class="dish__description-cell"
          matTooltip="{{data.description}}">
       {{data.description}}

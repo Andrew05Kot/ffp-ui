@@ -10,6 +10,7 @@ import { ApiService } from '@app/services/api/api.service';
 export class UsersOverviewComponent {
 
   displayedColumns: string[] = [
+    'imageUrl',
     'fullName',
     'birthday',
     'address',
