@@ -42,6 +42,11 @@ export const navbarData: SidenavItem[] = [
     label: 'Dishes'
   },
   {
+    routeLink: 'users',
+    icon: 'fal fa-user',
+    label: 'Users'
+  },
+  {
     routeLink: 'demo',
     icon: 'fal fa-keyboard',
     label: 'Demo'

@@ -1,0 +1,12 @@
+{
+  "UsersOverview": {
+    "fullName": "Name",
+    "birthday": "Birthday",
+    "address": "Address",
+    "country": "Country",
+    "city": "City",
+    "street": "Street",
+    "createdDate": "Created date",
+    "lastModifiedDate": "Last modified date"
+  }
+}

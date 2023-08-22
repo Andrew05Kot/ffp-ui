@@ -1,0 +1,26 @@
+<ffp-table [tableName]="'UsersOverview'"
+           [displayedColumns]="displayedColumns"
+           [service]="service"
+           [columnTemplateRefs]="{
+             createdDate: createdDate,
+             lastModifiedDate: lastModifiedDate,
+             address: address,
+             fullName: fullName,
+             birthday: birthday
+           }">
+  <ng-template #fullName let-data="data">
+    {{data.firstName + ' ' + data.lastName}}
+  </ng-template>
+  <ng-template #address let-data="data">
+    {{data.street + ' ' + data.houseNumber + ', (' + data.city + ', ' + data.country + ')'}}
+  </ng-template>
+  <ng-template #createdDate let-data="data">
+    {{data.createdDate | formatDate}}
+  </ng-template>
+  <ng-template #lastModifiedDate let-data="data">
+    {{data.lastModifiedDate | formatDate}}
+  </ng-template>
+  <ng-template #birthday let-data="data">
+    {{data.birthday | formatDate}}
+  </ng-template>
+</ffp-table>

@@ -24,7 +24,11 @@ const routes: Routes = [
       {
         path: 'establishment',
         loadChildren: () => import('./pages/establishment/establishment.module').then(m => m.EstablishmentModule)
-      }
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
+      },
     ]
   }
 ];
