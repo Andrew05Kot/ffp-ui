@@ -1,13 +1,17 @@
+import { UserDetail } from '@app/models/backend/ordering/user_detail';
+import { DishesToOrder } from '@app/models/backend/ordering/dishes_to_order';
+import { DeliveryAddress } from '@app/models/backend/ordering/delivery_address';
+
 export interface Ordering {
   id?: number,
-  creationDate?: string,
+  userDetail: UserDetail,
+  deliveryAddress: DeliveryAddress,
+  dishesToOrder: DishesToOrder[],
   totalPrice?: number,
-  cardName?: string,
-  cardNumber?: string,
-  expiration?: string,
-  cvv?: string,
+  orderStatus?: string,
   paymentMethod?: string,
-  selectedCategories?: string[]
+  creationDate?: string,
+  lastModifiedDate?: string
 }
 
 export interface OrderingResponse {

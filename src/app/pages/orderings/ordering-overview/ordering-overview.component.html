@@ -3,7 +3,7 @@
            [service]="service"
            [columnTemplateRefs]="{
              createdDate: createdDate,
-             lastModifiedDate: lastModifiedDate
+             lastModifiedDate: lastModifiedDate,
            }">
   <ng-template #createdDate let-data="data">
     {{data.createdDate | formatDate}}
