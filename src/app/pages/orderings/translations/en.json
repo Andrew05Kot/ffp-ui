@@ -1,10 +1,10 @@
 {
   "OrderingOverview": {
     "id": "Id",
-    "cardNumber": "Card number",
-    "paymentMethod": "Payment method",
-    "selectedCategories": "Selected categories",
     "createdDate": "Created date",
-    "lastModifiedDate": "Last modified date"
+    "lastModifiedDate": "Last modified date",
+    "totalPrice": "Total price",
+    "paymentMethod": "Payment method",
+    "orderStatus": "Order Status"
   }
 }
