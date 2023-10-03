@@ -1,21 +1,14 @@
 @import 'colors';
 
 @mixin shadow {
-  box-shadow: 10px 5px 27px 0 rgb(123 139 85 / 75%);
+  box-shadow: 10px 5px 27px 0 rgba(90, 101, 63, 0.37);
 }
 
 @mixin shadow-hower {
-  box-shadow: 10px 5px 27px 0 rgb(108 122 73 / 75%);
-}
-
-@mixin card {
-  padding: 32px;
-  background: $base;
-  border-radius: 10px;
-  @include shadow;
+  box-shadow: 10px 5px 27px 0 rgb(232 220 198 / 75%);
 }
 
 @mixin gradient-background() {
-  background-image: linear-gradient(to right top, #bbb7ae, #b9b39d, #b3b18d, #a9af7f, #9cae72);
-  background-size: cover;
+  background-color: #FDFAF0;
 }
+

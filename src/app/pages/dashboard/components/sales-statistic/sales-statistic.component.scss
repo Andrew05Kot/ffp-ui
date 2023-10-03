@@ -13,7 +13,14 @@
   }
 
   .card {
-    @include card;
+    padding: 20px;
+    background: $base-light;
+    flex: 0 0 calc(33.33% - 20px);
+    box-sizing: border-box;
+
+    .card-content {
+      width: 100%;
+    }
 
     &:hover {
       @include shadow-hower;

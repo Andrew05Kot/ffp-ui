@@ -19,11 +19,11 @@ export class DishService implements ApiService {
   getAll$(requestParams: RequestParams): Observable<PageResponse<Dish>> {
     const params = requestParams ?
       {
-        pageIndex: requestParams.pageIndex.toString(),
-        pageSize: requestParams.pageSize.toString(),
-        sortDirection: requestParams.sortDirection.toUpperCase(),
-        sortField: requestParams.sortField,
-        search: requestParams.search,
+        pageIndex: requestParams?.pageIndex?.toString(),
+        pageSize: requestParams?.pageSize?.toString(),
+        sortDirection: requestParams?.sortDirection?.toUpperCase(),
+        sortField: requestParams?.sortField,
+        search: requestParams?.search,
       }
       : {};
     return this.http.get<any>(`${environment.apiUrl}/${DishService.DishApiName}/api/v1/dishes/`, {params: params});

@@ -39,7 +39,17 @@ export const navbarData: SidenavItem[] = [
   {
     routeLink: 'dishes',
     icon: 'fal fa-hamburger',
-    label: 'Dishes'
+    label: 'Dishes',
+    subItems: [
+      {
+        routeLink: 'dishes',
+        label: 'Overview'
+      },
+      {
+        routeLink: 'dishes/cards',
+        label: 'Cards'
+      },
+    ]
   },
   {
     routeLink: 'users',

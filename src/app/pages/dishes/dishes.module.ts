@@ -21,11 +21,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ImageUploadModule } from '@app/components/image-upload/image-upload.module';
+import { DishesCardsComponent } from './dishes-cards/dishes-cards.component';
+import { CardModule } from '@app/components/card/card.module';
+import { CardsContainerModule } from '@app/components/cards-container/cards-container.module';
+import { DishCardContentComponent } from './dishes-cards/dish-card-content/dish-card-content.component';
 
 @NgModule({
   declarations: [
     DishesOverviewComponent,
-    CreatingEditingDishComponent
+    CreatingEditingDishComponent,
+    DishesCardsComponent,
+    DishCardContentComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +54,9 @@ import { ImageUploadModule } from '@app/components/image-upload/image-upload.mod
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    ImageUploadModule
+    ImageUploadModule,
+    CardModule,
+    CardsContainerModule
   ],
   providers: [
     DatePipe
