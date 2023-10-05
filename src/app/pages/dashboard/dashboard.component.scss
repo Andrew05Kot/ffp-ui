@@ -1,24 +1,10 @@
 @import 'styles/mixins';
 
-.shadow {
-  @include shadow;
-  padding: 20px;
-}
-
-.card {
-  @include card;
-
-  &:hover {
-    @include shadow-hower;
-  }
-}
-
 .dashboard-container {
   display: flex;
   flex-direction: column;
 
   .top-container {
-    height: 265px;
 
     .totals-row {
       padding: 10px;
@@ -40,7 +26,7 @@
       display: flex;
       align-items: center;
       height: 100%;
-      margin: 10px 20px;
+      margin: 10px 10px;
     }
   }
 }

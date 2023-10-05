@@ -1,0 +1,5 @@
+<ffp-cards-container *ngIf="dishes">
+  <ffd-card *ngFor="let dish of dishes">
+    <app-dish-card-content [dish]="dish"></app-dish-card-content>
+  </ffd-card>
+</ffp-cards-container>

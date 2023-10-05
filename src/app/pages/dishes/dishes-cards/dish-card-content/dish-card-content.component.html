@@ -1,0 +1,13 @@
+<div class="card-content">
+  <div class="image">
+    <img class="dish__image-img" [src]="dish.imageUrl" alt="">
+  </div>
+  <div class="label">
+    <div class="name">
+      {{dish.name}}
+    </div>
+    <div class="price">
+      {{dish.price | currency:'USD'}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.cards-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column-gap: 24px;
+    row-gap: 35px;
+    width: 100%;
+
+    @media screen and (max-width: 1300px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
