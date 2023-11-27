@@ -27,7 +27,7 @@ export class EstablishmentService implements ApiService {
       }
       : {};
 
-    return this.http.get<any>(`${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`, {params: params});
+    return this.http.get<any>(`${environment.apiUrl}/api/v1/establishments/`, {params: params});
   }
 
   create$(request: EstablishmentRequest): Observable<Establishment> {
@@ -36,7 +36,7 @@ export class EstablishmentService implements ApiService {
         'Content-Type': 'application/json'
       })
     };
-    const requestUrl = `${environment.apiUrl}/${EstablishmentService.EstablishmentApiName}/api/v1/establishments/`;
+    const requestUrl = `${environment.apiUrl}/api/v1/establishments/`;
     return this.http.post<any>(requestUrl, request);
   }
 
