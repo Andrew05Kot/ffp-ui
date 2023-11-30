@@ -1,0 +1,14 @@
+
+<mat-card *ngIf="!asButton" class="auth-card" [routerLink]="authItem.route" (click)="login()">
+  <mat-card-content class="icon-wrapper">
+    <mat-icon class="icon" [svgIcon]="authItem.iconName"></mat-icon>
+  </mat-card-content>
+  <h2>{{authItem.title}}</h2>
+</mat-card>
+
+<mat-card *ngIf="asButton" class="auth-card" [routerLink]="authItem.route" (click)="login()">
+  <mat-card-content class="icon-wrapper">
+    <mat-icon class="icon" [svgIcon]="authItem.iconName"></mat-icon>
+  </mat-card-content>
+  <h2>{{authItem.title}}</h2>
+</mat-card>
