@@ -1,0 +1,17 @@
+@import '../../../../../styles/mixins';
+
+section {
+  max-width: 98vw;
+  height: 92vh;
+  border-radius: 10px;
+  @include shadow;
+  position: relative;
+  overflow: auto;
+
+  .map {
+    width: 100%;
+    height: 92vh;
+    cursor: pointer;
+  }
+
+}

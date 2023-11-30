@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavToggle } from '@app/models/frontend';
+import { SidenavToggle } from '@app/admin/models/frontend';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,33 @@
+@import 'styles/mixins';
+
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+
+  .top-container {
+
+    .totals-row {
+      padding: 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .total-item {
+        margin: 15px;
+        width: 40%;
+        height: 100%;
+      }
+    }
+  }
+
+  .center-container {
+    .overview {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 10px 10px;
+    }
+  }
+}
