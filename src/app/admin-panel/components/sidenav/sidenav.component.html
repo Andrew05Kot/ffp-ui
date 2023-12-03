@@ -41,4 +41,12 @@
       </li>
     </ul>
   </div>
+
+  <div class="actions-block">
+    <a class="sidenav-nav-link"
+       routerLink="/logout">
+      <i [className]="'fal fa-arrow-circle-left'" class="sidenav-link-icon"></i>
+      <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">Logout</span>
+    </a>
+  </div>
 </div>

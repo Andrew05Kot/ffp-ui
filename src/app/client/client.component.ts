@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-client',
-  template: `<router-outlet></router-outlet>`
+  template: `
+    <app-client-header></app-client-header>
+    <app-layout></app-layout>
+  `,
+  styleUrls: ['./client.component.scss']
 })
 export class ClientComponent {
 
