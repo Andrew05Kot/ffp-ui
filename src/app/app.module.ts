@@ -2,25 +2,25 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent, SidenavComponent } from 'app/ffd-components/components';
+import { HeaderComponent } from 'app/ffd-components/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
-import { NotificationModule } from 'app/admin/services';
+import { NotificationModule } from '@app/admin-panel/services';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from '@app/ffd-components/components/layout/layout.component';
-import { SubLevelMenuComponent } from '@app/ffd-components/components/sidenav/sub-level-menu.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { L10nIntlModule, L10nTranslationModule } from 'angular-l10n';
 import { L10nCookieStorage } from '@app/core/utils/l10n/cookie-storge.service';
 import { getL10nConfig } from '@app/core/utils/l10n/l10n-config.helper';
 import { DestroyService } from '@app/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { TempAuthInterceptor } from './interceptors/app-auth.interceptor';
+import { TempAuthInterceptor } from '@app/core/interceptors/app-auth.interceptor';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { AdminPanelModule } from '@app/admin-panel/admin-panel.module';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -54,9 +54,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidenavComponent,
-    LayoutComponent,
-    SubLevelMenuComponent
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +70,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
       storage: L10nCookieStorage,
     }),
     L10nIntlModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    AdminPanelModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

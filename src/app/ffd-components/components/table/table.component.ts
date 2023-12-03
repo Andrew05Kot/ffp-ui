@@ -13,8 +13,8 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { debounceTime, merge, Observable, Subject, Subscription, tap } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
-import { RequestParams } from '@app/admin/models/backend';
-import { ApiService } from '@app/admin/services/api/api.service';
+import { RequestParams } from '@app/admin-panel/models/backend';
+import { ApiService } from '@app/admin-panel/services/api/api.service';
 
 export class IColumnTemplateRef {
   [columnName: string]: TemplateRef<any>;

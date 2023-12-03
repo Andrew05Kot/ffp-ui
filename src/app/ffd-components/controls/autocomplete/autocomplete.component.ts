@@ -4,9 +4,9 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/f
 import { Subject, Observable } from 'rxjs';
 import { takeUntil, distinctUntilChanged, startWith, map, filter } from 'rxjs/operators';
 
-import { ControlItem, Value } from '@app/admin/models/frontend';
+import { ControlItem, Value } from '@app/admin-panel/models/frontend';
 
-export { ControlItem, Value } from '@app/admin/models/frontend';
+export { ControlItem, Value } from '@app/admin-panel/models/frontend';
 
 @Component({
   selector: 'ffp-autocomplete',

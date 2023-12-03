@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-import { ControlItem, Value } from '@app/admin/models/frontend';
+import { ControlItem, Value } from '@app/admin-panel/models/frontend';
 
-export { ControlItem, Value } from '@app/admin/models/frontend';
+export { ControlItem, Value } from '@app/admin-panel/models/frontend';
 
 @Component({
   selector: 'ffp-radios',
