@@ -11,7 +11,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LayoutComponent } from '@app/ffd-components/components/layout/layout.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { L10nIntlModule, L10nTranslationModule } from 'angular-l10n';
 import { L10nCookieStorage } from '@app/core/utils/l10n/cookie-storge.service';
@@ -53,8 +52,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LayoutComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

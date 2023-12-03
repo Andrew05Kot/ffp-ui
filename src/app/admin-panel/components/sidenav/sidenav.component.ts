@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData, SidenavItem, SidenavToggle } from '@app/admin-panel/models/frontend';
-import { fadeInOut, rotate } from '@app/admin-panel/models/frontend/sidenav/animation';
+import { fadeInOut, rotate } from '@app/admin-panel/components/sidenav/models/animation';
 import { Router } from '@angular/router';
 
 @Component({

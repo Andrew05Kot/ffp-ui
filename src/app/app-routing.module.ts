@@ -6,13 +6,26 @@ const isAuthenticated: CanActivateFn = (route, state) => {
   return inject(AuthGuard).isAccessAllowed(route, state);
 }
 
+const isAdmin: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isAdmin();
+}
+
+const isClient: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isClient();
+}
+
 const routes: Routes = [
   {
     path: '',
     children: [
       {
+        path: 'app',
+        canActivate: [isAuthenticated, isClient],
+        loadChildren: () => import('@app/client/client.module').then(m => m.ClientModule)
+      },
+      {
         path: 'admin',
-        canActivate: [isAuthenticated],
+        canActivate: [isAuthenticated, isAdmin],
         loadChildren: () => import('@app/admin-panel/admin-panel.module').then(m => m.AdminPanelModule)
       },
       {

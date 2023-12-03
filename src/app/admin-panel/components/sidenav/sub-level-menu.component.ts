@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SidenavItem } from '@app/admin-panel/models/frontend';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { fadeInOut } from '@app/admin-panel/models/frontend/sidenav/animation';
+import { fadeInOut } from '@app/admin-panel/components/sidenav/models/animation';
 import { Router } from '@angular/router';
 
 @Component({

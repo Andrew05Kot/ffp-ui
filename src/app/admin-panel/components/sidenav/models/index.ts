@@ -8,12 +8,12 @@ export interface SidenavItem {
 
 export const navbarData: SidenavItem[] = [
   {
-    routeLink: 'admin/dashboard',
+    routeLink: 'dashboard',
     icon: 'fal fa-home',
     label: 'Dashboard'
   },
   {
-    routeLink: 'admin/ordering',
+    routeLink: 'ordering',
     icon: 'fal fa-tags',
     label: 'Ordering'
   },
@@ -23,41 +23,41 @@ export const navbarData: SidenavItem[] = [
     label: 'Establishments',
     subItems: [
       {
-        routeLink: 'admin/establishment',
+        routeLink: 'establishment',
         label: 'Overview'
       },
       {
-        routeLink: 'admin/establishment/map',
+        routeLink: 'establishment/map',
         label: 'All-Map'
       },
       {
-        routeLink: 'admin/establishment/list',
+        routeLink: 'establishment/list',
         label: 'List'
       }
     ]
   },
   {
-    routeLink: 'admin/dishes',
+    routeLink: 'dishes',
     icon: 'fal fa-hamburger',
     label: 'Dishes',
     subItems: [
       {
-        routeLink: 'admin/dishes',
+        routeLink: 'dishes',
         label: 'Overview'
       },
       {
-        routeLink: 'admin/dishes/cards',
+        routeLink: 'dishes/cards',
         label: 'Cards'
       },
     ]
   },
   {
-    routeLink: 'admin/users',
+    routeLink: 'users',
     icon: 'fal fa-user',
     label: 'Users'
   },
   {
-    routeLink: 'admin/demo',
+    routeLink: 'demo',
     icon: 'fal fa-keyboard',
     label: 'Demo'
   },

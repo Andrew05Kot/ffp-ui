@@ -1,4 +1,4 @@
 export * from './icon';
 export * from './item';
 export * from './control-item';
-export * from './sidenav';
+export * from '../../components/sidenav/models';
