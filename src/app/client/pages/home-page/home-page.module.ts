@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
+import { CarouselModule } from '@app/client/components/carousel/carousel.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { HomePageComponent } from './home-page.component';
   ],
   imports: [
     CommonModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    CarouselModule
   ]
 })
 export class HomePageModule { }
