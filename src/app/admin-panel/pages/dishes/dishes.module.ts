@@ -58,6 +58,9 @@ import { DishCardContentComponent } from './dishes-cards/dish-card-content/dish-
     CardModule,
     CardsContainerModule
   ],
+  exports: [
+    DishesCardsComponent
+  ],
   providers: [
     DatePipe
   ]

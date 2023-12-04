@@ -5,10 +5,15 @@ import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { ClientHeaderModule } from '@app/client/components/client-header/client-header.module';
 import { LayoutModule } from '@app/ffd-components';
+import { DishesListComponent } from './components/dishes-list/dishes-list.component';
 
 @NgModule({
   declarations: [
-    ClientComponent
+    ClientComponent,
+    DishesListComponent
+  ],
+  exports: [
+    DishesListComponent
   ],
   imports: [
     CommonModule,
