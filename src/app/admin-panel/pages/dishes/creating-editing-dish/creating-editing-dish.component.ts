@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject, Injector } from '@angular/core';
 import { DishForm } from '@app/admin-panel/pages/dishes/creating-editing-dish/form/dish-form.class';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DishService } from '@app/admin-panel/services/api/dish.service';
 import { ImageService } from '@app/admin-panel/services/api/image.service';
 import { Dish, DishRequest } from '@app/admin-panel/models/backend';
@@ -13,16 +13,18 @@ import { Dish, DishRequest } from '@app/admin-panel/models/backend';
 })
 export class CreatingEditingDishComponent {
 
-  action: 'create' | 'edit';
-  uploadedImage: File = null;
-
-  public readonly form = new DishForm(
-    inject(Injector)
-  );
+  public form: DishForm;
+  private uploadedImage: File = null;
 
   constructor(public dialogRef: MatDialogRef<CreatingEditingDishComponent>,
               private imageService: ImageService,
-              private dishService: DishService) {
+              private dishService: DishService,
+              @Inject(MAT_DIALOG_DATA) private data: {dish: Dish}) {
+    this.initForm();
+  }
+
+  private initForm(): void {
+    this.form = this.data?.dish ? new DishForm(inject(Injector), this.data.dish) : new DishForm(inject(Injector));
   }
 
   close(): void {

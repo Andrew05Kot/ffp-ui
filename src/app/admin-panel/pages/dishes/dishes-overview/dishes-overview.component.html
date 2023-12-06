@@ -1,6 +1,7 @@
 <ffp-table [tableName]="'DishesOverview'"
            [displayedColumns]="displayedColumns"
            [service]="service"
+           (onDoubleClick)="openEditDish($event)"
            [columnTemplateRefs]="{
              category: category, imageUrl: imageUrl, description: description,
              createdDate: createdDate, lastModifiedDate: lastModifiedDate}">

@@ -4,6 +4,7 @@ import { CreatingEditingDishComponent } from '@app/admin-panel/pages/dishes/crea
 import { DishService } from '@app/admin-panel/services/api/dish.service';
 import { ApiService } from '@app/admin-panel/services/api/api.service';
 import { DemoService } from '@app/admin-panel/services/api/demo.service';
+import { Dish } from '@app/admin-panel/models/backend';
 
 @Component({
   selector: 'app-dishes-overview',
@@ -34,10 +35,16 @@ export class DishesOverviewComponent {
 
   openCreateDish(): void {
     this.dialog.open(CreatingEditingDishComponent, {
+      width: '900px'
+    });
+  }
+
+  openEditDish(dish: Dish): void {
+    this.dialog.open(CreatingEditingDishComponent, {
       width: '900px',
       data: {
-        action: 'create'
+        dish: dish
       }
-    })
+    });
   }
 }

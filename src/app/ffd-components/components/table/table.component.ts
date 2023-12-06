@@ -1,10 +1,10 @@
 import {
   AfterViewInit,
   Component,
-  ContentChild,
+  ContentChild, EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
+  OnInit, Output,
   TemplateRef,
   ViewChild
 } from '@angular/core';
@@ -34,6 +34,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() displayedColumns: string[];
   @Input() columnTemplateRefs: IColumnTemplateRef = {};
   @Input() service: ApiService;
+
+  @Output() onDoubleClick: EventEmitter<any> = new EventEmitter<any>();
 
   @ContentChild('headerActions') headerActions: TemplateRef<any>;
 
@@ -118,6 +120,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dataSource = new MatTableDataSource(
       data?.length ? data : this.noData
     );
+  }
+
+  doubleClick(data): void {
+    this.onDoubleClick.next(data);
   }
 
 }

@@ -27,6 +27,6 @@
     {{data.lastModifiedDate | formatDate}}
   </ng-template>
   <ng-template #birthday let-data="data">
-    {{data.birthday | formatDate}}
+    {{data.birthday | formatDate:true:false}}
   </ng-template>
 </ffp-table>

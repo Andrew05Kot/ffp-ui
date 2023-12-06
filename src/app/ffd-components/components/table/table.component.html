@@ -17,7 +17,7 @@
 
     <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
       <th mat-header-cell class="dc-label" *matHeaderCellDef mat-sort-header l10nTranslate>{{tableName + '.' + column}}</th>
-      <td mat-cell class="dc-content" *matCellDef="let data">
+      <td mat-cell class="dc-content" *matCellDef="let data" (dblclick)="doubleClick(data)">
         <ng-container *ngTemplateOutlet="
             columnTemplateRefs[column] || defaultColumnRef;
             context: { data: data, column: column }
