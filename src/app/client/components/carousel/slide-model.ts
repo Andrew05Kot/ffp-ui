@@ -4,4 +4,7 @@ export interface SlideModel {
   description?: string;
   label?: string;
   imageUrl: string;
+  labels?: string[]
+  oldPrice: number;
+  newPrice: number;
 }

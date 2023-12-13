@@ -1,0 +1,46 @@
+.order-list-item-container {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  width: 100%;
+
+  .images-container {
+    padding: 15px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .image-wrapper {
+      position: absolute;
+
+
+      img {
+        width: 120px;
+      }
+    }
+  }
+
+  .ordering-info-container {
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+
+    .date {
+      font-weight: 700;
+      font-size: 14px;
+    }
+  }
+
+  .status-container {
+    position: absolute;
+    margin-bottom: 60px;
+    margin-left: 850px;
+    //height: 100%;
+    //display: flex;
+    //flex-direction: column;
+    //align-items: flex-start;
+    //padding: 20px 0;
+  }
+
+}

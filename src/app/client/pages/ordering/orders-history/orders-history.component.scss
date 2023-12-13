@@ -1,0 +1,16 @@
+.orders-history-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .order-list-item-wrapper {
+    width: 950px;
+    margin: 20px;
+  }
+
+  .headline {
+    width: 950px;
+    margin: 20px;
+  }
+}

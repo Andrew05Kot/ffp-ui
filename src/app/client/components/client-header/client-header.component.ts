@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-client-header',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ClientHeaderComponent {
 
+  constructor(private keycloakService: KeycloakService) {
+  }
+
+  logout(): void {
+    this.keycloakService.logout();
+  }
 }

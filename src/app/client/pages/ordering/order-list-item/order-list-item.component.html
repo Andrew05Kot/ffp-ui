@@ -1,0 +1,24 @@
+<ffd-card>
+  <div class="order-list-item-container">
+    <div class="images-container">
+      <ng-container *ngFor="let dish of orderItem.dishes; let i = index;">
+        <div class="image-wrapper" [style.margin-left]="((i + 1) * 5) + 'px'">
+          <img src="{{dish.imageUrl}}" alt="{{dish.name}}">
+        </div>
+      </ng-container>
+    </div>
+    <div class="ordering-info-container">
+      <div class="date">{{orderItem.date.toISOString() | formatDate}}</div>
+      <div class="dishes-list">
+        <ng-container *ngFor="let dish of orderItem.dishes; let i = index;">
+          {{dish.name + (i !== orderItem.dishes.length - 1 ? ', ' : '')}}
+        </ng-container>
+      </div>
+
+      <div class="total-price">Total price <b>{{orderItem.totalPrice | currency}}</b></div>
+    </div>
+    <div class="status-container">
+      <div class="status">{{orderItem.status}}</div>
+    </div>
+  </div>
+</ffd-card>

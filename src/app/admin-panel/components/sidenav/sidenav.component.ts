@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/
 import { navbarData, SidenavItem, SidenavToggle } from '@app/admin-panel/models/frontend';
 import { fadeInOut, rotate } from '@app/admin-panel/components/sidenav/models/animation';
 import { Router } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,7 +23,8 @@ export class SidenavComponent implements OnInit {
 
   protected readonly navbarData = navbarData;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private keycloakService: KeycloakService) {
 
   }
 
@@ -73,5 +75,9 @@ export class SidenavComponent implements OnInit {
         subItem.expanded = item === subItem && subItem.expanded;
       });
     }
+  }
+
+  logout(): void {
+    this.keycloakService.logout('/');
   }
 }

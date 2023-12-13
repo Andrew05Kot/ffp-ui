@@ -19,9 +19,9 @@ export class CarouselComponent implements OnInit {
   currentIndex = 0;
 
   ngOnInit(): void {
-    setInterval(() => {
+    // setInterval(() => {
       this.next()
-    }, 5000);
+    // }, 5000);
   }
 
   slideStyles(): { [key: string]: string } {

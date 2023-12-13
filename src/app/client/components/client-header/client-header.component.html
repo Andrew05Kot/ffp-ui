@@ -2,7 +2,11 @@
   <div class="header__title">Fast Food Pro</div>
   <div class="header__navigation">
     <a class="ffp-a" routerLink="home" routerLinkActive="ffp-a_active">Home</a>
-    <a class="ffp-a" routerLink="ordering" routerLinkActive="ffp-a_active">Menu</a>
-    <a class="ffp-a" routerLink="establishment" routerLinkActive="ffp-a_active">Orders</a>
+    <a class="ffp-a" routerLink="menu" routerLinkActive="ffp-a_active">Menu</a>
+    <a class="ffp-a" routerLink="orders" routerLinkActive="ffp-a_active">Orders</a>
+    <a class="ffp-a" (click)="logout()">
+      <span>Logout</span>
+      <i [className]="'fal fa-arrow-circle-right'" style="margin-left: 5px"></i>
+    </a>
   </div>
 </div>

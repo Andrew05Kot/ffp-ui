@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('@app/client/pages/home-page/home-page.module').then(m => m.HomePageModule)
       },
       {
+        path: 'orders',
+        loadChildren: () => import('@app/client/pages/ordering/ordering.module').then(m => m.OrderingModule)
+      },
+      {
         path: '**', redirectTo: 'home'
       }
     ],

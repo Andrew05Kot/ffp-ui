@@ -21,9 +21,11 @@ export class AuthGuard extends KeycloakAuthGuard {
 
     let authenticated = this.keycloak.getKeycloakInstance().authenticated;
     if (!authenticated) {
+      console.log('window.location.origin + state.url >> ', window.location.origin + state.url)
       await this.keycloak.login({
         redirectUri: window.location.origin + state.url,
       });
+      return false;
     }
 
     const requiredRoles = route.data['roles'];
