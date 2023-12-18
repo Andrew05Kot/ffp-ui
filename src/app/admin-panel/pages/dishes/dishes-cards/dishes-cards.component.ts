@@ -1,31 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { DishService } from '@app/admin-panel/services/api/dish.service';
-import { Dish, RequestParams } from '@app/admin-panel/models/backend';
+import { Component, Input } from '@angular/core';
+import { Dish } from '@app/admin-panel/models/backend';
 
 @Component({
   selector: 'app-dishes-cards',
   templateUrl: './dishes-cards.component.html',
   styleUrls: ['./dishes-cards.component.scss']
 })
-export class DishesCardsComponent implements OnInit {
+export class DishesCardsComponent {
 
-  dishes: Dish[] = [];
+  private _dishes: Dish[];
 
-  constructor(private dishService: DishService) {
+  get dishes(): Dish[] {
+    return this._dishes;
   }
 
-  ngOnInit(): void {
-    this.initDishes();
+  @Input() set dishes(value: Dish[]) {
+    this._dishes = value;
   }
-
-  private initDishes(): void {
-    const requestParams: RequestParams = {
-      pageIndex: 0,
-      pageSize: 15
-    };
-    this.dishService.getAll$(requestParams).subscribe(response => {
-      this.dishes = response.items;
-    });
-  }
-
 }

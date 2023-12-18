@@ -33,7 +33,6 @@ export class OrdersHistoryComponent {
         } as unknown as OrderItem;
       });
       this.cdr.detectChanges();
-      console.log(' this.orderItems >> ',  this.orderItems)
     });
   }
 

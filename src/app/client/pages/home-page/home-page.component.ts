@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DishService } from '@app/admin-panel/services/api/dish.service';
 import { SlideModel } from '@app/client/components/carousel/slide-model';
 import { RecommendationService } from '@app/client/services/api/recommendation.service';
-import { RequestParams } from '@app/admin-panel/models/backend';
+import { Dish, RequestParams } from '@app/admin-panel/models/backend';
 import { RecommendationByUser } from '@app/client/models/backend/recommendation';
 
 @Component({
@@ -13,12 +13,24 @@ import { RecommendationByUser } from '@app/client/models/backend/recommendation'
 export class HomePageComponent {
 
   slides: SlideModel[] = [];
+  dishes: Dish[] = [];
   recommendations: RecommendationByUser;
 
   constructor(private dishService: DishService,
               private recommendationService: RecommendationService) {
     // this.initTop5Dishes();
     this.initRecommendations();
+    this.loadItems();
+  }
+
+  private loadItems(): void {
+    const requestParams: RequestParams = {
+      pageIndex: 0,
+      pageSize: 15
+    };
+    this.dishService.getAll$(requestParams).subscribe(response => {
+      this.dishes = response.items;
+    });
   }
 
   private initRecommendations(): void {

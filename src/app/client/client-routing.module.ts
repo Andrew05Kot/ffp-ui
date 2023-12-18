@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('@app/client/pages/ordering/ordering.module').then(m => m.OrderingModule)
       },
       {
+        path: 'menu',
+        loadChildren: () => import('@app/client/pages/dishes-menu/dishes-menu.module').then(m => m.DishesMenuModule)
+      },
+      {
         path: '**', redirectTo: 'home-page'
       }
     ],
