@@ -1,6 +1,7 @@
 import { inject, NgModule } from '@angular/core';
 import { CanActivateFn, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@app/core/interceptors/auth.guard';
+import { HomePageComponent } from '@app/core/features/home-page/home-page.component';
 
 const isAuthenticated: CanActivateFn = (route, state) => {
   return inject(AuthGuard).isAccessAllowed(route, state);
@@ -29,7 +30,11 @@ const routes: Routes = [
         loadChildren: () => import('@app/admin-panel/admin-panel.module').then(m => m.AdminPanelModule)
       },
       {
-        path: '**', redirectTo: 'login'
+        path: 'home-page',
+        component: HomePageComponent
+      },
+      {
+        path: '**', redirectTo: 'home-page'
       }
     ]
   },

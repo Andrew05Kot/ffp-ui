@@ -1,9 +1,9 @@
-import { Dish } from '@app/admin-panel/models/backend';
+import { DishesToOrder } from '@app/admin-panel/models/backend/ordering/dishes_to_order';
 
 export interface OrderItem {
   id: string;
   date: Date;
   totalPrice: number;
   status: string;
-  dishes: Dish[];
+  dishes: DishesToOrder[];
 }

@@ -19,7 +19,7 @@ describe('FormatDatePipe', () => {
     expect(output).toBe('01.01.2022 12:30');
   });
 
-  it('should pad single-digit time components with leading zeros', () => {
+  it('should pad single-digit time features with leading zeros', () => {
     const input = '2023-07-18T05:07:00.000Z';
     const output = pipe.transform(input);
     expect(output).toBe('18.07.2023 05:07');

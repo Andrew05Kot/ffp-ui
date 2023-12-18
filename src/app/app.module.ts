@@ -20,6 +20,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TempAuthInterceptor } from '@app/core/interceptors/app-auth.interceptor';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AdminPanelModule } from '@app/admin-panel/admin-panel.module';
+import { HomePageModule } from '@app/core/features/home-page/home-page.module';
 
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -69,7 +70,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     }),
     L10nIntlModule,
     KeycloakAngularModule,
-    AdminPanelModule
+    AdminPanelModule,
+    HomePageModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

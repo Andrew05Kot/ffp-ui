@@ -21,7 +21,6 @@ export class AuthGuard extends KeycloakAuthGuard {
 
     let authenticated = this.keycloak.getKeycloakInstance().authenticated;
     if (!authenticated) {
-      console.log('window.location.origin + state.url >> ', window.location.origin + state.url)
       await this.keycloak.login({
         redirectUri: window.location.origin + state.url,
       });
@@ -43,6 +42,10 @@ export class AuthGuard extends KeycloakAuthGuard {
     }
 
     return requiredRoles.every((role) => this.roles.includes(role));
+  }
+
+  public isGuest(): boolean {
+    return !this.userRoles[0].includes('FFP_USER') &&  !this.userRoles[0].includes('FFD_ADMIN');
   }
 
   public isAdmin(): boolean {

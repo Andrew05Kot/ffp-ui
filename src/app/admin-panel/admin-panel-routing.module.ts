@@ -32,7 +32,7 @@ const routes: Routes = [
         loadChildren: () => import('@app/admin-panel/pages/demo/demo.module').then(m => m.DemoModule)
       },
       {
-        path: '**', redirectTo: 'dashboard'
+        path: '**', redirectTo: 'home-page'
       }
     ]
   }

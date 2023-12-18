@@ -1,7 +1,7 @@
-<ffd-card>
+<ffd-card *ngIf="orderItem">
   <div class="order-list-item-container">
-    <div class="images-container">
-      <ng-container *ngFor="let dish of orderItem.dishes; let i = index;">
+    <div class="images-container" *ngIf="dishes">
+      <ng-container *ngFor="let dish of dishes; let i = index;">
         <div class="image-wrapper" [style.margin-left]="((i + 1) * 5) + 'px'">
           <img src="{{dish.imageUrl}}" alt="{{dish.name}}">
         </div>
@@ -9,8 +9,8 @@
     </div>
     <div class="ordering-info-container">
       <div class="date">{{orderItem.date.toISOString() | formatDate}}</div>
-      <div class="dishes-list">
-        <ng-container *ngFor="let dish of orderItem.dishes; let i = index;">
+      <div class="dishes-list" *ngIf="dishes">
+        <ng-container *ngFor="let dish of dishes; let i = index;">
           {{dish.name + (i !== orderItem.dishes.length - 1 ? ', ' : '')}}
         </ng-container>
       </div>

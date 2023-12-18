@@ -34,7 +34,7 @@
     "angular-l10n": "^15.0.0",
     "chart.js": "^3.9.1",
     "keycloak-angular": "^15.0.0",
-    "keycloak-js": "^23.0.0",
+    "keycloak-js": "22.0.5",
     "leaflet": "^1.9.4",
     "material-icons": "^1.13.9",
     "ngx-cookie-service": "^16.0.0",
