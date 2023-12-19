@@ -6,6 +6,7 @@ export interface Dish {
   category: Category;
   imageUrl: string;
   labels: string[];
+  rating: number;
 }
 
 export interface DishesResponse {

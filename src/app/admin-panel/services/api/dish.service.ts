@@ -29,6 +29,10 @@ export class DishService implements ApiService {
     return this.http.get<any>(`${environment.apiUrl}/api/v1/dishes/`, {params: params});
   }
 
+  getAllUnpaged$(): Observable<Array<Dish>> {
+    return this.http.get<any>(`${environment.apiUrl}/api/v1/dishes/unpaged`);
+  }
+
   getById$(id: string): Observable<Dish> {
     return this.http.get<any>(`${environment.apiUrl}/api/v1/dishes/${id}`);
   }
