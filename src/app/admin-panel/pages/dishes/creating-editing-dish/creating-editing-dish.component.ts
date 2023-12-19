@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject, inject, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, inject, Injector } from '@angular/core';
 import { DishForm } from '@app/admin-panel/pages/dishes/creating-editing-dish/form/dish-form.class';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DishService } from '@app/admin-panel/services/api/dish.service';
 import { ImageService } from '@app/admin-panel/services/api/image.service';
-import { Dish, DishRequest } from '@app/admin-panel/models/backend';
+import { Dish, DishRequest, Label } from '@app/admin-panel/models/backend';
 
 @Component({
   selector: 'app-creating-editing-dish',
@@ -13,14 +13,20 @@ import { Dish, DishRequest } from '@app/admin-panel/models/backend';
 })
 export class CreatingEditingDishComponent {
 
+  labels: Label[] = [];
   public form: DishForm;
   private uploadedImage: File = null;
 
   constructor(public dialogRef: MatDialogRef<CreatingEditingDishComponent>,
               private imageService: ImageService,
               private dishService: DishService,
+              private cdr: ChangeDetectorRef,
               @Inject(MAT_DIALOG_DATA) private data: {dish: Dish}) {
     this.initForm();
+    this.dishService.getLabels$().subscribe(res => {
+      this.labels = res;
+      this.cdr.detectChanges();
+    });
   }
 
   private initForm(): void {

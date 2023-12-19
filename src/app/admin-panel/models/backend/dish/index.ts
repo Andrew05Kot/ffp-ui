@@ -29,3 +29,9 @@ export interface Category {
   id: number;
   name: string;
 }
+
+export interface Label {
+  id: string;
+  name: string;
+  description: string;
+}

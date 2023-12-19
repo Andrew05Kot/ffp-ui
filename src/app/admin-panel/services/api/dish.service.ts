@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Dish, DishRequest, RequestParams } from '@app/admin-panel/models/backend';
+import { Dish, DishRequest, Label, RequestParams } from '@app/admin-panel/models/backend';
 import { environment } from '@src/environments/environment.dev';
 import { PageResponse } from '@app/admin-panel/models/backend/page-response';
 import { ApiService } from '@app/admin-panel/services/api/api.service';
@@ -43,5 +43,9 @@ export class DishService implements ApiService {
 
   update$(id: number, dish: DishRequest): Observable<Dish> {
     return this.http.put<any>(`${environment.apiUrl}/api/v1/dishes/${id}`, dish);
+  }
+
+  getLabels$(): Observable<Array<Label>> {
+    return this.http.get<any>(`${environment.apiUrl}/api/v1/dishes/labels`);
   }
 }

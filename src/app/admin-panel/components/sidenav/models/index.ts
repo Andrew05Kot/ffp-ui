@@ -18,7 +18,7 @@ export const navbarData: SidenavItem[] = [
     label: 'Ordering'
   },
   {
-    routeLink: 'admin/establishment',
+    routeLink: 'establishment',
     icon: 'fal fa-map-marker',
     label: 'Establishments',
     subItems: [

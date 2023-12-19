@@ -28,6 +28,10 @@
         <mat-label>ImageUrl</mat-label>
         <input matInput formControlName="imageUrl"/>
       </mat-form-field>
+
+      <mat-chip-listbox [multiple]="true" aria-label="Labels:">
+        <mat-chip-option *ngFor="let label of labels">{{label.name}}</mat-chip-option>
+      </mat-chip-listbox>
     </div>
   </div>
 </div>

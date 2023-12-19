@@ -25,6 +25,7 @@ import { DishesCardsComponent } from './dishes-cards/dishes-cards.component';
 import { CardModule } from '@app/ffd-components/components/card/card.module';
 import { CardsContainerModule } from '@app/ffd-components/components/cards-container/cards-container.module';
 import { DishCardContentComponent } from './dishes-cards/dish-card-content/dish-card-content.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DishCardContentComponent } from './dishes-cards/dish-card-content/dish-
     MatButtonModule,
     ImageUploadModule,
     CardModule,
-    CardsContainerModule
+    CardsContainerModule,
+    MatChipsModule
   ],
   exports: [
     DishesCardsComponent
