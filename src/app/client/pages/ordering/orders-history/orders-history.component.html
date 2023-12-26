@@ -1,0 +1,12 @@
+<div class="headline">
+  <div class="text">
+    <h1>My ordering history:</h1>
+  </div>
+</div>
+<div class="orders-history-list" *ngIf="orderItems">
+  <ng-container *ngFor="let item of orderItems">
+    <div class="order-list-item-wrapper">
+      <app-order-list-item [orderItem]="item"></app-order-list-item>
+    </div>
+  </ng-container>
+</div>

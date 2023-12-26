@@ -1,36 +1,44 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { inject, NgModule } from '@angular/core';
+import { CanActivateFn, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@app/core/interceptors/auth.guard';
+import { HomePageComponent } from '@app/core/features/home-page/home-page.component';
+
+const isAuthenticated: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isAccessAllowed(route, state);
+}
+
+const isAdmin: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isAdmin();
+}
+
+const isClient: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isClient();
+}
 
 const routes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'demo',
-        loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
+        path: 'app',
+        canActivate: [isAuthenticated, isClient],
+        loadChildren: () => import('@app/client/client.module').then(m => m.ClientModule)
       },
       {
-        path: 'dashboard',
-        loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'admin',
+        canActivate: [isAuthenticated, isAdmin],
+        loadChildren: () => import('@app/admin-panel/admin-panel.module').then(m => m.AdminPanelModule)
       },
       {
-        path: 'ordering',
-        loadChildren: () => import('./pages/orderings/ordering.module').then(m => m.OrderingModule)
+        path: 'home-page',
+        component: HomePageComponent
       },
       {
-        path: 'dishes',
-        loadChildren: () => import('./pages/dishes/dishes.module').then(m => m.DishesModule)
-      },
-      {
-        path: 'establishment',
-        loadChildren: () => import('./pages/establishment/establishment.module').then(m => m.EstablishmentModule)
-      },
-      {
-        path: 'users',
-        loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
-      },
+        path: '**', redirectTo: 'home-page'
+      }
     ]
-  }
+  },
+
 ];
 
 @NgModule({

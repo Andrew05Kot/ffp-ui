@@ -1,0 +1,37 @@
+<ffp-table [tableName]="'DishesOverview'"
+           [displayedColumns]="displayedColumns"
+           [service]="service"
+           (onDoubleClick)="openEditDish($event)"
+           [columnTemplateRefs]="{
+             category: category, imageUrl: imageUrl, description: description,
+             createdDate: createdDate, lastModifiedDate: lastModifiedDate}">
+
+  <ng-template #headerActions>
+    <button mat-raised-button
+            color="primary"
+            (click)="openCreateDish()">
+      Create new
+    </button>
+  </ng-template>
+
+  <ng-template #category let-data="data">
+    {{data.category.name}}
+  </ng-template>
+  <ng-template #imageUrl let-data="data">
+    <div class="dish__image-cell">
+      <img class="dish__image-img" [src]="data.imageUrl" alt="">
+    </div>
+  </ng-template>
+  <ng-template #description let-data="data">
+    <div class="dish__description-cell"
+         matTooltip="{{data.description}}">
+      {{data.description}}
+    </div>
+  </ng-template>
+  <ng-template #createdDate let-data="data">
+    {{data.createdDate | formatDate}}
+  </ng-template>
+  <ng-template #lastModifiedDate let-data="data">
+    {{data.lastModifiedDate | formatDate}}
+  </ng-template>
+</ffp-table>

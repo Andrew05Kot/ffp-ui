@@ -1,0 +1,77 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto
+}
+
+.slide-container {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  position: relative;
+  height: 450px;
+  flex: 0 0 100%;
+  text-align: center;
+  padding: 0 65px;
+  background-color: #f9f9f9;
+  transition: opacity 0.5s ease;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .slide-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .slide-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 400px;
+    }
+  }
+
+  .labels-list {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.left-button {
+  position: absolute;
+  float: left;
+  border-radius: 50%;
+  left: 10px;
+  top: 48%;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 10000;
+}
+
+.right-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  border-radius: 48%;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 10000;
+}
+
+::ng-deep {
+  .mdc-evolution-chip-set__chips {
+    flex-flow: nowrap !important;
+  }
+}

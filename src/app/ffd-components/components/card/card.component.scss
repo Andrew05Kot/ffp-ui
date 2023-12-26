@@ -1,0 +1,21 @@
+@import '../../../../styles/mixins';
+
+.shadow {
+  @include shadow;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  background: $base-light;
+  flex: 0 0 calc(33.33% - 20px);
+  box-sizing: border-box;
+
+  .card-content {
+    width: 100%;
+  }
+
+  &:hover {
+    @include shadow-hower;
+  }
+}

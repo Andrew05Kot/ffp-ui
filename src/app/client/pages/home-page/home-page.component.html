@@ -1,0 +1,10 @@
+<app-carousel [height]="'400px'"
+              [maxWidth]="'75%'"
+              *ngIf="slides?.length === 5"
+              [slides]="slides">
+</app-carousel>
+
+<div class="dishes-cards-wrapper">
+  <app-dishes-cards [dishes]="dishes"></app-dishes-cards>
+</div>
+

@@ -1,0 +1,39 @@
+<div class="carousel"
+     *ngIf="_slides"
+     [style.height]="height"
+     [style.max-width]="maxWidth">
+  <img class="left-button"
+       (click)="prev()"
+       src="/assets/images/prev.png"
+       alt="previous">
+  <div class="slide-container"
+       [ngStyle]="slideStyles()">
+
+    <div class="slide"
+         *ngFor="let item of _slides; let i = index"
+         [ngClass]="{'active': currentIndex === i}">
+
+      <div class="slide-info">
+        <h1 class="title">{{ item.title }} <b>{{item.newPrice.toFixed(2) | currency:'USD'}}</b>  (<s> {{item.oldPrice.toFixed(2) | currency:'USD'}}</s>)</h1>
+        <h2 class="subtitle">{{ item.subtitle }}</h2>
+        <h4 class="description">{{ item.description }}</h4>
+      </div>
+      <div class="slide-image">
+        <img src="{{item.imageUrl}}" alt="{{item.title}}">
+      </div>
+
+      <div class="labels-list">
+        <mat-chip-listbox aria-label="Labels selection">
+          <mat-chip *ngFor="let label of item.labels">
+            {{label}}
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </div>
+
+  </div>
+  <img class="right-button"
+       (click)="next()"
+       src="/assets/images/next.png"
+       alt="next">
+</div>

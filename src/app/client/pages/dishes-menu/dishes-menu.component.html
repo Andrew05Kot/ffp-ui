@@ -1,0 +1,15 @@
+<div class="dishes-cards-wrapper">
+
+  <div class="filtering-subheader">
+    <div class="tool-bar__searching">
+      <ffp-input (keyup)="onSearchTyping()"
+                 [(ngModel)]="searchText"
+                 [type]="'search'"
+                 placeholder="Search">
+      </ffp-input>
+    </div>
+  </div>
+
+  <app-dishes-cards [dishes]="dishes"></app-dishes-cards>
+</div>
+
